@@ -1,0 +1,385 @@
+{
+  "model": {
+    "Product": {
+      "list_name": "Product list",
+      "title": "Product",
+      "search": "Search Product",
+      "addImage": "Add images",
+      "button_name": {
+        "new": "New Service",
+        "create": "Create Service",
+        "update": "Update Service"
+      },
+      "field": {
+        "name": "Name",
+        "createTime": "Particical Age",
+        "total": "Total",
+        "email": "Email",
+        "phone": "Phone",
+        "group": "Group",
+        "staff": "Staff",
+        "nationalityName": "Nationality Name",
+        "nationalityCode": "Nationality Code",
+        "status": "Status",
+        "category": "Category",
+        "price": "Price",
+        "description": "Description",
+        "totalPrice": "Tổng tiền",
+        "productType": "Product type",
+        "quantity": "Quantity"
+      },
+      "action": {
+        "createProduct": "Create product",
+        "edit": "Edit",
+        "delete": "Delete",
+        "searchProduct": "Search product...",
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "addImage": "Add image",
+        "save": "Save changes"
+      },
+      "message": {
+        "confirmDelete": "Are you sure to delete this? ",
+        "dialogTitle": "Delete confirm"
+      },
+      "pageTitle": {
+        "createPage": "Create a new product",
+        "editPage": "Edit a new product"
+      },
+      "validate": {
+        "name": "Name is required",
+        "price": {
+          "required": "Price age is required",
+          "condition": "More than 1"
+        },
+        "quantity": {
+          "required": "quantity age is required",
+          "condition": "More than 1"
+        },
+        "description": "Description is required",
+        "category": "Category is required"
+      }
+    },
+    "Partner": {
+      "list_name": "Partner list",
+      "title": "Partner",
+      "search": "Search partner",
+      "addImage": "Add image",
+      "button_name": {
+        "new": "Add new patner",
+        "create": "Create new partner",
+        "update": "Update Partner"
+      },
+      "field": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address",
+        "status": "Status",
+        "webUrl": "Web url",
+        "partnerType": "Partner type"
+      },
+      "action": {
+        "createPartner": "Add Parter",
+        "edit": "Edit",
+        "delete": "Delete",
+        "search": "Search Partner...",
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "addImage": "Add image",
+        "detail": "Detail",
+        "select": "Chọn partner",
+        "addToSite": "Add to site",
+        "save": "Save changes",
+        "business": "Business"
+      },
+      "message": {
+        "confirmDelete": "Are you sure to delete this? ",
+        "dialogTitle": "Delete confirm"
+      },
+      "pageTitle": {
+        "createPage": "Create Partner",
+        "editPage": "Edit Partner"
+      },
+      "label": {
+        "partner": "Partner"
+      },
+      "validate": {
+        "partnerSide": "Partner is required"
+      },
+      "tab": {
+        "orderList": "Order list",
+        "orderChart": "Order chart",
+        "monthlyReport": "Monthly report"
+      }
+    },
+    "order": {
+      "list_name": "Order list",
+      "title": "Order",
+      "search": "Search order",
+      "addImage": "Add image",
+      "button_name": {
+        "new": "Add new Order",
+        "create": "Create new Order",
+        "update": "Update Order"
+      },
+      "field": {
+        "name": "Name",
+        "createTime": "Create Time",
+        "total": "Total",
+        "email": "Email",
+        "phone": "Phone",
+        "groupId": "Group Id",
+        "mediaUrl": "Media Url",
+        "staffId": "Staff Id",
+        "nationalityCode": "Nationality code",
+        "nationalityName": "Nationality name",
+        "status": "Status",
+        "orderDetails": "Order details",
+        "orderId": "Order ID"
+      },
+      "action": {
+        "create": "Create order",
+        "edit": "Edit",
+        "delete": "Delete",
+        "search": "Search order...",
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "addImage": "Add image",
+        "detail": "Detail",
+        "select": "Chọn order",
+        "addToSite": "Add to site",
+        "save": "Save changes"
+      },
+      "message": {
+        "confirmCancel": "Are you sure to cancel this? ",
+        "dialogTitle": "Cancel order",
+        "reason": "Cancellation reason",
+        "select:": "Select reason",
+        "reasonLabel": "Select reason",
+        "selectReason:": "Select reason",
+        "otherReason": "Other reason"
+      },
+      "pageTitle": {
+        "createPage": "Create Order",
+        "editPage": "Edit order",
+        "DetailPage": "Detail order"
+      },
+      "label": {
+        "orderId": "Order ID",
+        "customerName": "Customer name",
+        "createTime": "Create time",
+        "nationalityName": "Nationality name",
+        "email": "Email",
+        "phone": "Phone",
+        "total": "Total",
+        "quantity": "Quantity",
+        "price": "Price",
+        "orderInfomation": "Order information",
+        "totalProduct": "Total product",
+        "status": "Status",
+        "item": "item"
+      },
+      "status": {
+        "new": "New",
+        "deleted": "Deleted",
+        "canceled": "Canceld"
+      }
+    },
+    "siteInfo": {
+      "title": "Site information",
+      "button_name": {
+        "update": "Update infomation",
+        "edit": "Save changes"
+      },
+      "field": {},
+      "action": {
+        "save": "Save changes"
+      },
+      "pageTitle": {
+        "detailPage": "Detail site information"
+      },
+      "label": {
+        "name": "Name",
+        "createTime": "Create time",
+        "email": "Email",
+        "phone": "Phone",
+        "webUrl": "Web url",
+        "address": "Address",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "allowed": "Allowed"
+      },
+      "status": {}
+    },
+    "group": {
+      "list_name": "Group list",
+      "title": "Group",
+      "search": "Search Group",
+      "addImage": "Add image",
+      "button_name": {
+        "new": "Add new Group",
+        "create": "Create new Group",
+        "update": "Update Group"
+      },
+      "field": {
+        "id": "id",
+        "startTime": "Start time",
+        "endTime": "End time",
+        "timeTo": "Time to",
+        "licenseLate": "LicenseLate",
+        "note": "Note",
+        "siteId": "SiteId",
+        "status": "Status"
+      },
+      "action": {
+        "create": "Create Group",
+        "edit": "Edit",
+        "delete": "Delete",
+        "search": "Search Group...",
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "addImage": "Add image",
+        "detail": "Detail",
+        "select": "Chọn partner",
+        "addToSite": "Add to site",
+        "save": "Save changes"
+      },
+      "message": {
+        "confirmDelete": "Are you sure to delete this? ",
+        "dialogTitle": "Delete confirm"
+      },
+      "pageTitle": {
+        "createPage": "Create Group",
+        "editPage": "Edit Group"
+      },
+      "label": {
+        "partner": "partner"
+      },
+      "validate": {
+        "partnerSide": "partner is required"
+      }
+    },
+    "report": {
+      "tab": {
+        "saleReport": "SALE REPORT"
+      },
+      "field": {
+        "partnerName": "Partner Name",
+        "totalGroup": "Total Group",
+        "totalOrder": "Total order",
+        "total": "Total",
+        "totalCommisson": "Total commisson",
+        "orderId": "Order ID",
+        "createTime": "Create Time",
+        "status": "Status",
+        "tenderType": "Tender type",
+        "amount": "Amount"
+      },
+      "action": {
+        "preview": "Preview",
+        "dowload": "Dowload"
+      },
+      "label": {
+        "searchReport": "Search report",
+        "dailySaleReport": "Daily Sale Report",
+        "monthlySaleReport": "Monthly Sale report of partner",
+        "reportFrom": "REPORT FROM",
+        "manager": "MANAGER",
+        "siteName": "Site name",
+        "address": "Address",
+        "createTime": "Cteate time",
+        "sale": "Sale",
+        "date": "Date",
+        "month": "Month",
+        "numberOfOrder": "Number of order",
+        "numberService": "Number of service",
+        "commission": "COMMISSION",
+        "total": "Total",
+        "totalCommisson": "Total Commission",
+        "numberOfGroup": "Number of group:",
+        "numberOfPartner": "Number of partner",
+        "partnerList": "PARTNER LIST",
+        "orderList": "ORDER LIST",
+        "haveAQuestion": "Have a Question?",
+        "revenue": "Revenue",
+        "emptyNoti": "No orders or customer groups"
+      }
+    }
+  },
+  "Status": {
+    "availble": "Availble",
+    "unAvailble": "unAvailble",
+    "deleted": "Deleted",
+    "cancel": "Cancel",
+    "new": "New",
+    "complete": "Complete",
+    "notFound": "Not found",
+    "netFoundMess": "No results found for",
+    "tryChecking": "Try checking for typos or using complete words."
+  },
+  "root": {
+    "list": "list",
+    "dashboard": "Dashboard",
+    "product": "Product",
+    "newProduct": "New product",
+    "newPartner": "New partner",
+    "partner": "Partner",
+    "editPartner": "Edit partner",
+    "order": "Order",
+    "orderDetail": "Order Detail",
+    "siteInfoDetail": "Site Detail",
+    "group": "Group",
+    "newGroup": "New Group",
+    "groupDetail": "Group Detail",
+    "manageOrder": "Partner's order",
+    "addNew": "Add new",
+    "Edit": "Edit"
+  },
+  "snackBar": {
+    "CreateSuccess": "Create success",
+    "UdpateSuccess": "Udpate success",
+    "CreateError": "Create error",
+    "UpdateError": "Update error"
+  },
+  "menu": {
+    "sideBar": {
+      "title": "MANAGEMENT",
+      "item": {
+        "product": "Product",
+        "partner": "Partner",
+        "order": "Order",
+        "group": "Group",
+        "list": "List",
+        "report": "Report"
+      }
+    },
+    "userMenu": {
+      "title": "Signed in as",
+      "home": "Home",
+      "settings": "Settings",
+      "logout": "Logout",
+      "siteInfo": "Site Infomation"
+    },
+    "navbar": {
+      "siteManager": "SITE MANAGER "
+    }
+  },
+  "dashboard": {
+    "garden": {
+      "title": "Number of garden"
+    },
+    "tourists": {
+      "title": "Total number of order"
+    },
+    "revenue": {
+      "title": "Total Revenue"
+    },
+    "nationality": {
+      "title": "Nationality of tourists"
+    },
+    "order": {
+      "title": "Revenue chart by month"
+    }
+  }
+}

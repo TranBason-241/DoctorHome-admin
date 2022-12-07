@@ -1,0 +1,377 @@
+{
+    "model": {
+        "Product": {
+            "list_name": "Danh sách sản phẩm",
+            "title": "Product",
+            "search": "Search Product",
+            "addImage": "Add images",
+            "button_name": {
+                "new": "New Service",
+                "create": "Create Service",
+                "update": "Update Service"
+            },
+            "field": {
+                "name": "Tên",
+                "createTime": "Particical Age",
+                "total": "Total",
+                "email": "Email",
+                "phone": "Phone",
+                "group": "Group",
+                "staff": "Staff",
+                "nationalityName": "Nationality Name",
+                "nationalityCode": "nationality Code",
+                "status": "Trạng thái",
+                "category": "Loại",
+                "price": "Giá",
+                "description": "Mô tả",
+                "productType": "Loại sản phẩm",
+                "totalPrice": "Tổng tiền",
+                "quantity": "Số lượng"
+            },
+            "action": {
+                "createProduct": "Tạo sản phẩm",
+                "edit": "Chỉnh sửa",
+                "delete": "Xóa",
+                "searchProduct": "Tìm kiếm sản phẩm...",
+                "cancel": "Hủy",
+                "confirm": "Đồng ý",
+                "addImage": "Thêm ảnh",
+                "save": "lưu thay đổi"
+            },
+            "message": {
+                "confirmDelete": "Bạn có chắc chắn muốn xóa",
+                "dialogTitle": "Xác nhận xóa"
+            },
+            "pageTitle": {
+                "createPage": "Tạo mới sản phẩm",
+                "editPage": "chỉnh sửa sản phẩm"
+            },
+            "validate": {
+                "name": "Vui lòng nhập tên",
+                "price": {
+                    "required": "Vui lòng nhập giá",
+                    "condition": "Giá lớn hơn 0"
+                },
+                "quantity": {
+                    "required": "Vui lòng nhập số lượng",
+                    "condition": "số lượng lớn hơn 0"
+                },
+                "description": "Vui lòng nhập mô tả",
+                "category": "Vui lòng chọn loại sản phẩm"
+            }
+        },
+        "Partner": {
+            "list_name": "Danh sách đối tác",
+            "title": "Đối tác",
+            "search": "Tìm kiếm đối tác",
+            "addImage": "Thêm ảnh",
+            "button_name": {
+                "new": "Thêm mới đối tác",
+                "create": "Tạo mới đối tác",
+                "update": "Cập nhật đối tác"
+            },
+            "field": {
+                "name": "Tên",
+                "email": "Email",
+                "phone": "Số điện thoại",
+                "address": "Địa chỉ",
+                "status": "Trạng thái",
+                "webUrl": "Địa chỉ web",
+                "partnerType": "Loại đối tác"
+            },
+            "action": {
+                "createPartner": "Thêm đối tác",
+                "edit": "Chỉnh sửa",
+                "delete": "Xóa",
+                "search": "Tìm kiếm đối tác...",
+                "cancel": "Hủy",
+                "confirm": "Đồng ý",
+                "addImage": "Thêm ảnh",
+                "detail": "Chi tiết",
+                "select": "Chọn đối tác",
+                "addToSite": "Thêm vào khu vực",
+                "save": "lưu thay đổi",
+                "business": "Kinh doanh"
+            },
+            "message": {
+                "confirmDelete": "Bạn có chắc chắn muốn xóa? ",
+                "dialogTitle": "Xác nhận xóa"
+            },
+            "pageTitle": {
+                "createPage": "Tạo đối tác",
+                "editPage": "Chỉnh sửa đối tác"
+            },
+            "label": {
+                "partner": "Đối tác"
+            },
+            "validate": {
+                "partnerSide": "Vui lòng chọn đối tác"
+            },
+            "tab": {
+                "orderList": "Danh sách đơn hàng",
+                "orderChart": "Biểu đồ đơn hàng",
+                "monthlyReport": "Báo cáo tháng"
+            }
+        },
+        "order": {
+            "list_name": "Danh sách đơn hàng",
+            "title": "Đơn hàng",
+            "search": "Tìm kiếm đơn hàng",
+            "addImage": "Thêm ảnh",
+            "button_name": {
+                "new": "Thêm mới đơn hàng",
+                "create": "Tạo mới đơn hàng",
+                "update": "Cập nhật đơn hàng"
+            },
+            "field": {
+                "name": "Tên",
+                "createTime": "Thời gian tạo",
+                "total": "Tổng",
+                "email": "Email",
+                "phone": "Điện thoại",
+                "groupId": "Mã nhóm",
+                "mediaUrl": "Media Url",
+                "staffId": "Mã nhân viên",
+                "nationalityCode": "Mã quốc tịch",
+                "nationalityName": "Quốc tịch",
+                "status": "Trạng thái",
+                "orderDetails": "Chi tiết đơn hàng",
+                "orderId": "Mã đơn hàng"
+            },
+            "action": {
+                "edit": "Chỉnh sửa",
+                "delete": "xóa",
+                "search": "Tìm kiếm đơn hàng...",
+                "cancel": "Hủy",
+                "confirm": "Xác nhận",
+                "detail": "Chi tiết"
+            },
+            "message": {
+                "confirmCancel": "Bạn có muốn hủy đơn hàng này? ",
+                "dialogTitle": "Hủy đơn hàng",
+                "reason": "Lí do hủy",
+                "select:": "Chọn lí do",
+                "selectReason:": "Chọn lí do",
+                "reasonLabel": "Chọn lí do",
+                "otherReason": "Lí do khác"
+            },
+            "pageTitle": {
+                "DetailPage": "Chi tiết đơn hàng"
+            },
+            "label": {
+                "orderId": "Mã đơn hàng",
+                "customerName": "Tên khách hàng",
+                "createTime": "Ngày tạo",
+                "nationalityName": "Quốc tịch",
+                "total": "Tổng",
+                "totalProduct": "Tổng sản phẩm",
+                "email": "Email",
+                "phone": "Điện thoại",
+                "quantity": "Số lượng",
+                "price": "giá",
+                "orderInfomation": "Thông tin đơn hàng",
+                "item": "sản phẩm",
+                "status": "Trạng thái"
+            },
+            "status": {
+                "new": "Mới",
+                "deleted": "Đã hủy",
+                "canceled": "Đã hủy"
+            }
+        },
+        "siteInfo": {
+            "title": "Thông tin site",
+            "button_name": {
+                "update": "Cập nhật thông tin site",
+                "edit": "Cập nhật"
+            },
+            "field": {},
+            "action": {
+                "save": "Lưu thay đổi"
+            },
+            "pageTitle": {
+                "detailPage": "Chi tiết thông tin site"
+            },
+            "label": {
+                "name": "Tên",
+                "createTime": "Ngày tạo",
+                "email": "Email",
+                "phone": "Điện thoại",
+                "webUrl": "Web url",
+                "address": "Địa chỉ",
+                "latitude": "Vĩ độ",
+                "longitude": "Kinh độ",
+                "allowed": "Cho phép"
+            },
+            "status": {}
+        },
+        "group": {
+            "list_name": "Danh sánh nhóm khách",
+            "title": "Nhóm khách",
+            "search": "Tìm kiếm nhóm khách",
+            "addImage": "Add image",
+            "button_name": {
+                "new": "Thêm nhóm",
+                "create": "Tạo nhóm",
+                "update": "Cập nhật nhóm"
+            },
+            "field": {
+                "id": "Mã nhóm",
+                "startTime": "Thời gian bắt đầu",
+                "endTime": "Thời gian kết thúc",
+                "timeTo": "Thời gian",
+                "licenseLate": "Biển số",
+                "note": "ghi chú",
+                "siteId": "Mã site",
+                "status": "Trạng thái"
+            },
+            "action": {
+                "create": "Tạo nhóm",
+                "edit": "Chỉnh sửa",
+                "delete": "Xóa",
+                "search": "Tìm kiếm nhóm khách",
+                "cancel": "Hủy tác vụ",
+                "confirm": "Xác nhạn",
+                "addImage": "Thêm ảnh",
+                "detail": "Chi tiết",
+                "select": "Chọn",
+                "save": "Lưu thay đổi"
+            },
+            "message": {
+                "confirmDelete": "Are you sure to delete this? ",
+                "dialogTitle": "Delete confirm"
+            },
+            "pageTitle": {
+                "createPage": "Tạo nhóm khách",
+                "editPage": "Chỉnh sửa thông tin nhóm khách"
+            },
+            "label": {
+                "partner": "partner"
+            },
+            "validate": {
+                "partnerSide": "partner is required"
+            }
+        },
+        "report": {
+            "tab": {
+                "saleReport": "BÁO CÁO BÁN HÀNG"
+            },
+            "field": {
+                "partnerName": "Tên đối tác",
+                "totalGroup": "Số nhóm",
+                "totalOrder": "Tổng đơn hàng",
+                "total": "Tổng",
+                "totalCommisson": "Tổng chiết khấu",
+                "orderId": "Mã đơn hàng",
+                "createTime": "Thời gian tạo",
+                "status": "Trạng thái",
+                "tenderType": "Loại thanh toán",
+                "amount": "Số lượng"
+            },
+            "action": {
+                "preview": "Xem trước",
+                "dowload": "Tải về"
+            },
+            "label": {
+                "searchReport": "Tìm kiếm báo cáo",
+                "dailySaleReport": "Báo cáo bán hàng hằng ngày",
+                "monthlySaleReport": "Báo cáo bán hàng hằng tháng của đối tác",
+                "reportFrom": "BÁO CÁO TỪ:",
+                "manager": "QUẢN LÍ",
+                "siteName": "Tên khu vực",
+                "address": "Địa chỉ",
+                "createTime": "Thời gian tạo",
+                "sale": "Bán hàng",
+                "date": "Ngày",
+                "month": "Tháng",
+                "numberOfOrder": "Số đơn hàng",
+                "numberService": "Số dịch vụ",
+                "commission": "CHIẾT KHẤU",
+                "total": "Tổng",
+                "totalCommisson": "Tổng tiền chiết khấu",
+                "numberOfGroup": "Số nhóm",
+                "numberOfPartner": "Số đối tác",
+                "partnerList": "DANH SÁCH ĐỐI TÁC",
+                "orderList": "DANH SÁCH ĐƠN HÀNG",
+                "haveAQuestion": "Nếu có câu hỏi?",
+                "revenue": "Doanh thu",
+                "emptyNoti": "Không có đơn hàng hoặc đoàn khách nào"
+            }
+        }
+    },
+    "Status": {
+        "availble": "Đang hoạt động",
+        "unAvailble": "Không hoạt động",
+        "deleted": "Đã xóa",
+        "cancel": "Đã hủy",
+        "new": "Mới",
+        "complete": "Hoàn thành",
+        "notFound": "Không tìm thấy",
+        "netFoundMess": "Không có kết quả cho",
+        "tryChecking": "Thử kiểm tra lỗi chính tả hoặc sử dụng các từ hoàn chỉnh"
+    },
+    "root": {
+        "list": "Danh sách",
+        "dashboard": "Bản điều khiển",
+        "product": "Sản phẩm",
+        "newProduct": "Tạo sản phẩm",
+        "partner": "Đối tác",
+        "newPartner": "Thêm đối tác",
+        "editPartner": "Chỉnh sửa đối tác",
+        "order": "Đơn hàng",
+        "orderDetail": "Chi tiết đơn hàng",
+        "siteInfoDetail": "Chi tiết site",
+        "group": "Nhóm khách",
+        "newGroup": "Tạo nhóm khách mới",
+        "groupDetail": "Chi tiết nhóm khách",
+        "manageOrder": "Đơn hàng của đối tác",
+        "addNew": "Thêm mới",
+        "Edit": "Chỉnh sửa"
+    },
+    "snackBar": {
+        "CreateSuccess": "Tạo thành công",
+        "UdpateSuccess": "Chỉnh sửa thành công",
+        "CreateError": "Tạo không thành công",
+        "UpdateError": "Chỉnh sửa không thành công"
+    },
+    "menu": {
+        "sideBar": {
+            "title": "Ban Quản Trị",
+            "item": {
+                "product": "Sản phẩm",
+                "partner": "Đối tác",
+                "order": "Đơn hàng",
+                "group": "Nhóm khách",
+                "list": "danh sách",
+                "report": "Báo cáo"
+            }
+        },
+        "userMenu": {
+            "title": "Đăng nhập với tư cách là",
+            "home": "Trang chính",
+            "settings": "Cài đặt",
+            "logout": "Đăng xuất",
+            "siteInfo": "Thông tin site"
+        },
+        "navbar": {
+            "siteManager": "QUẢN LÍ KINH DOANH ĐỊA ĐIỂM "
+        }
+    },
+    "dashboard": {
+        "garden": {
+            "title": "Số lượng vườn đang quản lí"
+        },
+        "tourists": {
+            "title": "Tổng số đơn hàng"
+        },
+        "revenue": {
+            "title": "Tổng doanh thu"
+        },
+        "nationality": {
+            "title": "Quốc tịch của khách"
+        },
+        "order": {
+            "title": "Biểu đồ doanh thu hàng theo tháng"
+        }
+    }
+}
