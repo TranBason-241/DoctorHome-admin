@@ -85,7 +85,7 @@ export default function OrderPartnerNumber({ name }: DiverNewFormProps) {
   return (
     <Card sx={{ display: 'flex', alignItems: 'center', p: 3 }}>
       <Box>
-        <Typography variant="subtitle2">{translate('dashboard.tourists.title')}</Typography>
+        <Typography variant="subtitle2">Tổng số bài tập</Typography>
         <Stack direction="row" alignItems="center" spacing={1} sx={{ mt: 0, mb: 1 }}>
           {/* <IconWrapperStyle
             sx={{

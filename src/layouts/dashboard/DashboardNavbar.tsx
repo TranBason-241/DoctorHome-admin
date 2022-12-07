@@ -95,9 +95,6 @@ export default function DashboardNavbar({ onOpenSidebar }: DashboardNavbarProps)
         </MHidden>
 
         {/* <Searchbar /> */}
-        <h3 style={{ color: 'black', fontFamily: 'inherit' }}>
-          {translate('menu.navbar.siteManager')} : {currentSiteInfo?.name.toLocaleUpperCase()}
-        </h3>
         <Box sx={{ flexGrow: 1 }} />
 
         <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>

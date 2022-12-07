@@ -71,9 +71,9 @@ export default function Router() {
     {
       path: 'dashboard',
       element: (
-        <AuthGuard>
-          <DashboardLayout />
-        </AuthGuard>
+        // <AuthGuard>
+        <DashboardLayout />
+        /* </AuthGuard> */
       ),
       children: [
         { path: '/', element: <Navigate to="/dashboard/app" replace /> },

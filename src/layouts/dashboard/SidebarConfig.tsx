@@ -29,7 +29,11 @@ const ICONS = {
   analytics: getIcon('ic_analytics'),
   dashboard: getIcon('ic_dashboard'),
   kanban: getIcon('ic_kanban'),
-  service: getIcon('ic_ecommerce')
+  service: getIcon('ic_ecommerce'),
+  typeBaiTap: getIcon('type_baitap'),
+  baiTap: getIcon('baitap'),
+  phoi_1: getIcon('phoi_1'),
+  phoi_2: getIcon('phoi_2')
 };
 
 export default function SidebarConfig() {
@@ -53,12 +57,17 @@ export default function SidebarConfig() {
     // MANAGEMENT
     // ----------------------------------------------------------------------
     {
-      subheader: translate('menu.sideBar.title'),
+      subheader: 'Quản lý bài tập',
       items: [
         {
-          title: translate('menu.sideBar.item.product'),
+          title: 'service list',
           path: PATH_DASHBOARD.service.list,
-          icon: ICONS.service
+          icon: ICONS.typeBaiTap
+        },
+        {
+          title: 'Loại Bài Tập',
+          path: PATH_DASHBOARD.service.list,
+          icon: ICONS.phoi_2
         },
         // {
         //   title: translate('menu.sideBar.item.partner'),
@@ -76,21 +85,26 @@ export default function SidebarConfig() {
         //   ]
         // },
         {
-          title: translate('menu.sideBar.item.partner'),
+          title: 'Danh sách Bài Tập',
+          path: PATH_DASHBOARD.partner.list,
+          icon: ICONS.baiTap
+        },
+        {
+          title: 'user',
           path: PATH_DASHBOARD.partner.list,
           icon: ICONS.user
-        },
-
-        {
-          title: translate('menu.sideBar.item.order'),
-          path: PATH_DASHBOARD.order.list,
-          icon: ICONS.kanban
-        },
-        {
-          title: translate('menu.sideBar.item.report'),
-          path: PATH_DASHBOARD.report.reportDetail,
-          icon: ICONS.analytics
         }
+
+        // {
+        //   title: translate('menu.sideBar.item.order'),
+        //   path: PATH_DASHBOARD.order.list,
+        //   icon: ICONS.kanban
+        // },
+        // {
+        //   title: translate('menu.sideBar.item.report'),
+        //   path: PATH_DASHBOARD.report.reportDetail,
+        //   icon: ICONS.analytics
+        // }
       ]
     }
   ];
