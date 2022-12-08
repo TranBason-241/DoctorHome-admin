@@ -37,11 +37,12 @@ export default function AppWelcome({ displayName }: AppWelcomeProps) {
       >
         <Typography gutterBottom variant="h4">
           <br />
-          hello {!displayName ? '...' : displayName}!
+          Danh sách các loại bài tập
         </Typography>
 
         <Typography variant="body2" sx={{ pb: { xs: 3, xl: 5 }, maxWidth: 480, mx: 'auto' }}>
-          Let's make a magic garden
+          Loại bài tập sẽ bao gồm nhiều loại bài tập con <br />
+          Bấm vào xem danh sách bài tập con để xem các bài tập con
         </Typography>
 
         {/* <Button variant="contained" to="#" component={RouterLink}>

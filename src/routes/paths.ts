@@ -149,6 +149,12 @@ export const PATH_DASHBOARD = {
   report: {
     root: path(ROOTS_DASHBOARD, '/report/'),
     reportDetail: path(ROOTS_DASHBOARD, '/report/reportDetail')
+  },
+  exerciseType: {
+    root: path(ROOTS_DASHBOARD, '/exercisetype'),
+    list: path(ROOTS_DASHBOARD, '/exercisetype/list'),
+    newExerciseType: path(ROOTS_DASHBOARD, '/exercisetype/new'),
+    editByIdService: path(ROOTS_DASHBOARD, '/service/:name/edit')
   }
 };
 

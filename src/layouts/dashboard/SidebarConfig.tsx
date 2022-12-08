@@ -66,7 +66,7 @@ export default function SidebarConfig() {
         },
         {
           title: 'Loại Bài Tập',
-          path: PATH_DASHBOARD.service.list,
+          path: PATH_DASHBOARD.exerciseType.list,
           icon: ICONS.phoi_2
         },
         // {
