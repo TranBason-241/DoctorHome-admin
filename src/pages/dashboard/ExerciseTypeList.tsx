@@ -28,6 +28,7 @@ export default function MyClass() {
 
   useEffect(() => {
     dispatch(getListExerciseType(0));
+    console.log('hahaha');
   }, [dispatch]);
 
   return (
