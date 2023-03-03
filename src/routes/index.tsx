@@ -246,7 +246,7 @@ export default function Router() {
           children: [
             { path: '/', element: <Navigate to="/dashboard/exercisetype/list" replace /> },
             { path: 'list', element: <ExerciseTypeList /> },
-            { path: 'new', element: <ServiceCreate /> },
+            { path: 'new', element: <ExerciseTypeCreate /> },
             { path: '/:name/edit', element: <ServiceCreate /> }
           ]
         }

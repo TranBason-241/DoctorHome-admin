@@ -126,7 +126,7 @@ export default function ServiceNewForm1({ isEdit, currentService }: UserNewFormP
     },
     validationSchema: hasquantity ? NewProductSchemaQuantity : NewProductSchema,
     onSubmit: async (values, { setSubmitting, resetForm, setErrors }) => {
-      let flag = false;
+      const flag = false;
       try {
         const bodyFormData = new FormData();
         if (isEdit) {
@@ -156,17 +156,6 @@ export default function ServiceNewForm1({ isEdit, currentService }: UserNewFormP
         }
         values.imageUrl.map((file: File | string) => bodyFormData.append('imageFiles', file));
         console.log(values);
-        !isEdit
-          ? await manageService.createService(bodyFormData).then((response) => {
-              if (response.status == 200) {
-                flag = true;
-              }
-            })
-          : await manageService.updateService(bodyFormData).then((response) => {
-              if (response.status == 200) {
-                flag = true;
-              }
-            });
         if (flag) {
           resetForm();
           setSubmitting(false);
@@ -455,7 +444,6 @@ export default function ServiceNewForm1({ isEdit, currentService }: UserNewFormP
                     onDrop={handleDrop}
                     onRemove={handleRemove}
                     onRemoveAll={handleRemoveAll}
-                    // error={Boolean(touched.imageUrl && errors.imageUrl)}
                   />
                   {/* {touched.imageUrl && errors.imageUrl && (
                       <FormHelperText error sx={{ px: 2 }}>

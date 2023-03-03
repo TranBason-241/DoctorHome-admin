@@ -42,7 +42,7 @@ export default function MyClass() {
             <Button
               variant="contained"
               component={RouterLink}
-              to={PATH_DASHBOARD.groupRole.newGroupRole}
+              to={PATH_DASHBOARD.exerciseType.newExerciseType}
               startIcon={<Icon icon={plusFill} />}
             >
               Tạo mới loại bài tập

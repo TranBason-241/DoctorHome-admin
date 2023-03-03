@@ -47,7 +47,7 @@ export default function ClassCard({ exerciseType, index }: classCardProps) {
         p: 2,
         // backgroundColor: bgColor[index],
         backgroundColor: 'rgba(225, 239, 240, 255)',
-        height: '20vh'
+        height: 'auto'
       }}
     >
       <Box sx={{ flexGrow: 1 }}>
@@ -58,28 +58,20 @@ export default function ClassCard({ exerciseType, index }: classCardProps) {
             {exerciseType?.description}
           </Typography>
         </Stack>
-        <Grid container justifyContent="right">
-          <Grid item sx={{ mt: 4, mb: 0 }} spacing={1}>
-            <Button
-              variant="contained"
-              to={`${PATH_DASHBOARD.root}/${exerciseType?.id}`}
-              component={RouterLink}
-            >
-              Loại bài tập thuộc {exerciseType?.description}
-            </Button>
+        <Stack>
+          <Grid container justifyContent="right">
+            <Grid item sx={{ mt: 4, mb: 1 }} spacing={1}>
+              <Button
+                variant="contained"
+                to={`${PATH_DASHBOARD.root}/${exerciseType?.id}`}
+                component={RouterLink}
+              >
+                {/* Xem tất cả bài tập {exerciseType?.description} */}
+                Xem tất cả
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>
-        {/* <Grid container justifyContent="right">
-          <Grid item sx={{ mt: 2, mb: 0 }} spacing={1}>
-            <Button
-              variant="contained"
-              to={`${PATH_DASHBOARD.root}/${exerciseType?.id}`}
-              component={RouterLink}
-            >
-              Loại bài {exerciseType?.title}
-            </Button>
-          </Grid>
-        </Grid> */}
+        </Stack>
       </Box>
     </Card>
   );

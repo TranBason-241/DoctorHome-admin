@@ -70,14 +70,10 @@ export default function ExerciseTypeCreate() {
 
   return (
     // <Page title={!isEdit ? 'Service: Create a new service' : 'Service: Edit service'}>
-    <Page title={!isEdit ? 'Tạo mới sản phẩm' : 'Chỉnh sửa sản phẩm'}>
+    <Page title={!isEdit ? 'Tạo mới loại bài tập' : 'Chỉnh sửa loại bài tập'}>
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <HeaderBreadcrumbs
-          heading={
-            !isEdit
-              ? translate('model.Product.pageTitle.createPage')
-              : translate('model.Product.pageTitle.editPage')
-          }
+          heading={!isEdit ? 'Tạo mới loại bài tập' : 'Chỉnh sửa loại bài tập'}
           links={[
             { name: translate('root.dashboard'), href: PATH_DASHBOARD.root },
             { name: translate('root.dashboard'), href: PATH_DASHBOARD.service.root },
