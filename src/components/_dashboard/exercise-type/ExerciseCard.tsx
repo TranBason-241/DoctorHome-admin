@@ -10,6 +10,8 @@ import { Box, Card, Typography, Stack, Button, Grid } from '@material-ui/core';
 // utils
 import { fNumber, fPercent } from '../../../utils/formatNumber';
 import { ExerciseType } from '../../../@types/exerciseType';
+import GardenMoreMenu from '../garden/typesList/GardenTypesMoreMenu';
+import { ExcerciseMoreMenu } from './list';
 
 // ----------------------------------------------------------------------
 
@@ -39,6 +41,20 @@ export default function ClassCard({ exerciseType, index }: classCardProps) {
   const theme = useTheme();
   const bgColor = ['rgba(225,239,240,255)', 'rgba(255,237,188,255)', '#FFCCCC'];
 
+  const handleDeleteExcerciseType = async (gardenId: string) => {
+    // try {
+    //   await manageGarden.deleteGarden(gardenId).then((respone) => {
+    //     if (respone.status === 200) {
+    //       enqueueSnackbar('Delete success', { variant: 'success' });
+    //       dispatch(getListGarden());
+    //     } else {
+    //       enqueueSnackbar('Delete error', { variant: 'error' });
+    //     }
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
   return (
     <Card
       sx={{
@@ -51,8 +67,19 @@ export default function ClassCard({ exerciseType, index }: classCardProps) {
       }}
     >
       <Box sx={{ flexGrow: 1 }}>
-        <Typography variant="h3">{exerciseType?.title}</Typography>
-
+        <Grid container justifyContent="space-between">
+          <Grid item sx={{ mb: 1 }}>
+            <Typography variant="h3">{exerciseType?.title}</Typography>
+          </Grid>
+          <Grid item sx={{ mb: 1 }}>
+            <Typography variant="h3">
+              <ExcerciseMoreMenu
+                onDelete={() => handleDeleteExcerciseType(exerciseType?.id?.toString())}
+                userName={exerciseType?.id.toString()}
+              />
+            </Typography>
+          </Grid>
+        </Grid>
         <Stack direction="row" alignItems="" spacing={0} sx={{ mt: 2, mb: 0 }}>
           <Typography component="span" variant="subtitle2">
             {exerciseType?.description}

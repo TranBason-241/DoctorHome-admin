@@ -154,7 +154,7 @@ export const PATH_DASHBOARD = {
     root: path(ROOTS_DASHBOARD, '/exercisetype'),
     list: path(ROOTS_DASHBOARD, '/exercisetype/list'),
     newExerciseType: path(ROOTS_DASHBOARD, '/exercisetype/new'),
-    editByIdService: path(ROOTS_DASHBOARD, '/service/:name/edit')
+    editByExerciseTypeId: path(ROOTS_DASHBOARD, '/exercisetype/:name/edit')
   }
 };
 

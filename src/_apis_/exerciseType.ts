@@ -16,7 +16,7 @@ export class ExerciseTypeManager {
   // get exercise type by id
   getExerciseTypeID = (partnerSiteID: string) => {
     return axios
-      .get(`/api/v1/site-manager/partners/${partnerSiteID}`)
+      .get(`/api/v1/exercisegroups/${partnerSiteID}`)
       .then((res) => res)
       .catch((err) => err);
   };
@@ -34,14 +34,10 @@ export class ExerciseTypeManager {
   };
 
   // update exercise type
-  updateExerciseType = (diver: any) => {
+  updateExerciseType = (excerciseType: any) => {
     return axios
-      .put('/api/v1/admin/divers', diver, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      })
-      .then((response) => response)
+      .put('/api/v1/admin/gardens', excerciseType)
+      .then((res) => res)
       .catch((err) => err);
   };
 

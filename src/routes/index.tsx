@@ -247,7 +247,7 @@ export default function Router() {
             { path: '/', element: <Navigate to="/dashboard/exercisetype/list" replace /> },
             { path: 'list', element: <ExerciseTypeList /> },
             { path: 'new', element: <ExerciseTypeCreate /> },
-            { path: '/:name/edit', element: <ServiceCreate /> }
+            { path: '/:name/edit', element: <ExerciseTypeCreate /> }
           ]
         }
       ]

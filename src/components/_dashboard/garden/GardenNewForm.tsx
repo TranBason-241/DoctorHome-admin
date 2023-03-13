@@ -115,23 +115,11 @@ export default function GardenNewForm({ isEdit, currentGarden }: GardenNewFormPr
     validationSchema: NewGardenSchema,
     onSubmit: async (values, { setSubmitting, resetForm, setErrors }) => {
       try {
-        let flag = false;
+        const flag = false;
 
         if (isEdit) {
           values.status = enumStatus!.id;
         }
-
-        !isEdit
-          ? await manageGarden.createGarden(values).then((response) => {
-              if (response.status == 200) {
-                flag = true;
-              }
-            })
-          : await manageGarden.updateGarden(values).then((response) => {
-              if (response.status == 200) {
-                flag = true;
-              }
-            });
         if (flag) {
           resetForm();
           setSubmitting(false);

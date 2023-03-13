@@ -21,7 +21,10 @@ import Page from '../../components/Page';
 import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
 import ServiceNewForm from '../../components/_dashboard/service/ServiceNewForm';
 import ServiceNewForm1 from '../../components/_dashboard/service/ServiceNewForm1';
-import { Service } from '../../@types/service';
+
+import ExcersiceNewForm from '../../components/_dashboard/exercise-type/ExcerciseNewForm';
+import { manageExerciseType } from '../../_apis_/exerciseType';
+import { ExerciseType } from '../../@types/exerciseType';
 
 // ----------------------------------------------------------------------
 
@@ -30,39 +33,23 @@ export default function ExerciseTypeCreate() {
   const { themeStretch } = useSettings();
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-
-  const { diverList } = useSelector((state: RootState) => state.diver);
   const isEdit = pathname.includes('edit');
   const { name } = useParams();
 
-  const [currentService, setcurrentService] = useState<Service>();
+  const [currentExcerciseType, setcurrentExcerciseType] = useState<ExerciseType>();
 
   useEffect(() => {
-    dispatch(getListProductType());
     if (isEdit) {
-      manageService.getServiceByID(paramCase(name)).then((response) => {
+      manageExerciseType.getExerciseTypeID(paramCase(name)).then((response) => {
         if (response.status == 200) {
-          // console.log(response.data);
           const data = {
             id: response.data.id,
-            name: response.data.name,
-            // participationAge: response.data.participationAge,
-            // departureTime: response.data.departureTime,
-            // pickupPoint: response.data.pickupPoint,
-            // duration: response.data.duration,
-            categoryId: response.data.categoryId,
-            categoryName: response.data.categoryName,
-            price: response.data.price,
+            title: response.data.title,
             description: response.data.description,
-            mediaUrl: response.data.mediaUrl,
-            status: response.data.status,
-            site: response.data.site,
-            images: response.data.images,
-            imageUrl: [],
-            quantity: response.data.quantity
+            level: response.data.level
           };
-          // console.log(data);
-          setcurrentService(data);
+          console.log(data);
+          setcurrentExcerciseType(data);
         }
       });
     }
@@ -75,12 +62,12 @@ export default function ExerciseTypeCreate() {
         <HeaderBreadcrumbs
           heading={!isEdit ? 'Tạo mới loại bài tập' : 'Chỉnh sửa loại bài tập'}
           links={[
-            { name: translate('root.dashboard'), href: PATH_DASHBOARD.root },
-            { name: translate('root.dashboard'), href: PATH_DASHBOARD.service.root },
-            { name: !isEdit ? translate('root.newProduct') : name }
+            { name: 'Bản điều khiển', href: PATH_DASHBOARD.root },
+            { name: 'Danh sách loại bài tập', href: PATH_DASHBOARD.exerciseType.root },
+            { name: !isEdit ? 'Tạo mới loại bài tập' : name }
           ]}
         />
-        <ServiceNewForm1 isEdit={isEdit} currentService={currentService} />
+        <ExcersiceNewForm isEdit={isEdit} currentExcerciseType={currentExcerciseType} />
       </Container>
     </Page>
   );
