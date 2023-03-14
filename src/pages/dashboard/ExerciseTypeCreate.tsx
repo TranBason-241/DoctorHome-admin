@@ -22,7 +22,7 @@ import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
 import ServiceNewForm from '../../components/_dashboard/service/ServiceNewForm';
 import ServiceNewForm1 from '../../components/_dashboard/service/ServiceNewForm1';
 
-import ExcersiceNewForm from '../../components/_dashboard/exercise-type/ExcerciseNewForm';
+import ExcersiceNewForm from '../../components/_dashboard/exercise-type/ExcerciseTypeNewForm';
 import { manageExerciseType } from '../../_apis_/exerciseType';
 import { ExerciseType } from '../../@types/exerciseType';
 

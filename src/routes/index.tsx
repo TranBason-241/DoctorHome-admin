@@ -249,6 +249,15 @@ export default function Router() {
             { path: 'new', element: <ExerciseTypeCreate /> },
             { path: '/:name/edit', element: <ExerciseTypeCreate /> }
           ]
+        },
+        {
+          path: 'excercise',
+          children: [
+            { path: '/', element: <Navigate to="/dashboard/exercisetype/list" replace /> },
+            { path: 'excercisetype/:name/list', element: <ExcerciseList /> },
+            { path: 'new', element: <ExerciseTypeCreate /> },
+            { path: '/:name/edit', element: <ExerciseTypeCreate /> }
+          ]
         }
       ]
     },
@@ -446,6 +455,7 @@ const OrderList = Loadable(lazy(() => import('../pages/dashboard/OrderList')));
 const ServiceList = Loadable(lazy(() => import('../pages/dashboard/ServiceList')));
 const ExerciseTypeCreate = Loadable(lazy(() => import('../pages/dashboard/ExerciseTypeCreate')));
 const ExerciseTypeList = Loadable(lazy(() => import('../pages/dashboard/ExerciseTypeList')));
+const ExcerciseList = Loadable(lazy(() => import('../pages/dashboard/ExcerciseList')));
 const PartnerList = Loadable(lazy(() => import('../pages/dashboard/PartnerList')));
 const GroupRollCreate = Loadable(lazy(() => import('../pages/dashboard/GroupRollCreate')));
 const GroupCreate = Loadable(lazy(() => import('../pages/dashboard/GroupCreate')));

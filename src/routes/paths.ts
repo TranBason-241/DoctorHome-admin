@@ -155,6 +155,12 @@ export const PATH_DASHBOARD = {
     list: path(ROOTS_DASHBOARD, '/exercisetype/list'),
     newExerciseType: path(ROOTS_DASHBOARD, '/exercisetype/new'),
     editByExerciseTypeId: path(ROOTS_DASHBOARD, '/exercisetype/:name/edit')
+  },
+  exercise: {
+    root: path(ROOTS_DASHBOARD, '/exercisetype'),
+    list: path(ROOTS_DASHBOARD, '/exercise/exercisetype/:name/list'),
+    newExerciseType: path(ROOTS_DASHBOARD, '/exercisetype/new'),
+    editByExerciseTypeId: path(ROOTS_DASHBOARD, '/exercisetype/:name/edit')
   }
 };
 

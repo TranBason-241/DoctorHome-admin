@@ -69,7 +69,7 @@ type UserNewFormProps = {
   // currentUser?: UserManager;
   currentExcerciseType?: ExerciseType;
 };
-export default function ExcersiceNewForm({ isEdit, currentExcerciseType }: UserNewFormProps) {
+export default function ExcersiceTypeNewForm({ isEdit, currentExcerciseType }: UserNewFormProps) {
   const [img, setImg] = useState<string[]>();
   const { translate } = useLocales();
   const productTypeList = useSelector((state: RootState) => state.service.productType);

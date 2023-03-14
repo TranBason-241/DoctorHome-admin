@@ -90,7 +90,7 @@ export default function ClassCard({ exerciseType, index }: classCardProps) {
             <Grid item sx={{ mt: 4, mb: 1 }} spacing={1}>
               <Button
                 variant="contained"
-                to={`${PATH_DASHBOARD.root}/${exerciseType?.id}`}
+                to={`${PATH_DASHBOARD.root}/excercise/excercisetype/${exerciseType?.id}/list`}
                 component={RouterLink}
               >
                 {/* Xem tất cả bài tập {exerciseType?.description} */}

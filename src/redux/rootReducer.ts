@@ -17,6 +17,7 @@ import groupRoleReducer from './slices/groupRole';
 import groupReducer from './slices/group';
 import partnerReducer from './slices/partner';
 import exerciseTypeReducer from './slices/exerciseType';
+import excerciseReducer from './slices/excercise';
 
 // ----------------------------------------------------------------------
 
@@ -49,6 +50,7 @@ const rootReducer = combineReducers({
   kanban: kanbanReducer,
   partner: partnerReducer,
   exerciseType: exerciseTypeReducer,
+  excercise: excerciseReducer,
   product: persistReducer(productPersistConfig, productReducer)
 });
 
