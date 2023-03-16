@@ -7,8 +7,8 @@ export class ExcerciseManager {
       .get('api/v1/exercises', {
         params: {
           'exercise-group': excerciseTypeId,
-          page_size: p_size,
-          page_number: p_number
+          limit: p_size,
+          'page-offset': p_number
         }
       })
       .then((res) => res)
@@ -18,7 +18,7 @@ export class ExcerciseManager {
   // get excercise  by id
   getExcerciseID = (excerciseID: string) => {
     return axios
-      .get(`/api/v1/exercisegroups/${excerciseID}`)
+      .get(`/api/v1/exercises/${excerciseID}`)
       .then((res) => res)
       .catch((err) => err);
   };

@@ -156,11 +156,11 @@ export const PATH_DASHBOARD = {
     newExerciseType: path(ROOTS_DASHBOARD, '/exercisetype/new'),
     editByExerciseTypeId: path(ROOTS_DASHBOARD, '/exercisetype/:name/edit')
   },
-  exercise: {
-    root: path(ROOTS_DASHBOARD, '/exercisetype'),
-    list: path(ROOTS_DASHBOARD, '/exercise/exercisetype/:name/list'),
+  excercise: {
+    root: path(ROOTS_DASHBOARD, '/excercise'),
+    list: path(ROOTS_DASHBOARD, '/excercise/exercisetype/:name/list'),
     newExerciseType: path(ROOTS_DASHBOARD, '/exercisetype/new'),
-    editByExerciseTypeId: path(ROOTS_DASHBOARD, '/exercisetype/:name/edit')
+    editByExerciseTypeId: path(ROOTS_DASHBOARD, '/:name/edit')
   }
 };
 

@@ -60,8 +60,8 @@ export function getListExcercise(excerciseTypeId: number, p_size: number, p_numb
       manageExcercise.getListExcercise(excerciseTypeId, p_size, p_number + 1).then((response) => {
         if (response.status == 200) {
           dispatch(slice.actions.getListExcercise(response.data.content));
-          console.log(response.data.content);
-          //   dispatch(slice.actions.getTotalCount(response.data.metaData.totalCount));
+          // console.log(response.data.content);
+          dispatch(slice.actions.getTotalCount(response.data.totalCount));
         } else {
           dispatch(slice.actions.getListExcercise([]));
         }

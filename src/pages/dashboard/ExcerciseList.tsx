@@ -41,7 +41,7 @@ import useSettings from '../../hooks/useSettings';
 // @types
 import { Diver } from '../../@types/diver';
 import { Partner } from '../../@types/partner';
-
+import { Excercise } from '../../@types/excercise';
 // components
 import Page from '../../components/Page';
 import Label from '../../components/Label';
@@ -55,10 +55,11 @@ import {
 } from '../../components/_dashboard/diver/list';
 
 import {
-  PartnerListHead,
-  PartnerListToolbar,
-  PartnerMoreMenu
-} from '../../components/_dashboard/partner/list';
+  ExcerciseListHead,
+  ExcerciseToolBar,
+  ExcerciseMoreMenu
+} from '../../components/_dashboard/excercise/list';
+
 // ----------------------------------------------------------------------
 
 type Anonymous = Record<string | number, string>;
@@ -79,7 +80,11 @@ function getComparator(order: string, orderBy: string) {
     : (a: Anonymous, b: Anonymous) => -descendingComparator(a, b, orderBy);
 }
 
-function applySortFilter(array: Partner[], comparator: (a: any, b: any) => number, query: string) {
+function applySortFilter(
+  array: Excercise[],
+  comparator: (a: any, b: any) => number,
+  query: string
+) {
   const stabilizedThis = array.map((el, index) => [el, index] as const);
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
@@ -89,7 +94,7 @@ function applySortFilter(array: Partner[], comparator: (a: any, b: any) => numbe
   if (query) {
     return filter(
       array,
-      (_partner) => _partner.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
+      (_partner) => _partner.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
     );
   }
   return stabilizedThis.map((el) => el[0]);
@@ -104,9 +109,10 @@ export default function ExcerciseList() {
   const { name } = useParams();
   const dispatch = useDispatch();
   // const diverList = useSelector((state: RootState) => state.diver.diverList);
-  const partnerSiteList = useSelector((state: RootState) => state.partner.partnerList);
-  const totalCount = useSelector((state: RootState) => state.partner.totalCount);
-  const isLoading = useSelector((state: RootState) => state.partner.isLoading);
+  // const partnerSiteList = useSelector((state: RootState) => state.partner.partnerList);
+  const excerciseList = useSelector((state: RootState) => state.excercise.excerciseList);
+  const totalCount = useSelector((state: RootState) => state.excercise.totalCount);
+  const isLoading = useSelector((state: RootState) => state.excercise.isLoading);
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState<'asc' | 'desc'>('asc');
   const [selected, setSelected] = useState<string[]>([]);
@@ -115,11 +121,14 @@ export default function ExcerciseList() {
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const TABLE_HEAD = [
-    { id: 'name', label: translate('model.Partner.field.name'), alignRight: false },
-    { id: 'phone', label: translate('model.Partner.field.phone'), alignRight: false },
-    { id: 'email', label: translate('model.Partner.field.email'), alignRight: false },
-    { id: 'address', label: translate('model.Partner.field.address'), alignRight: false },
-    { id: 'Status', label: translate('model.Partner.field.status'), alignRight: false },
+    { id: 'title', label: 'Tên bài tập', alignRight: false },
+    // { id: 'description', label: 'mô tả', alignRight: false },
+    { id: 'bodyposition', label: 'Vị trí trị liệu', alignRight: false },
+    { id: 'practiceSchedule', label: 'lịch tập', alignRight: false },
+    { id: 'practicetime', label: 'số lần thực hiện', alignRight: false },
+    { id: 'levelexercises', label: 'cấp độ bài tập', alignRight: false },
+    // { id: 'durationvideo', label: 'thời lượng video', alignRight: false },
+    // { id: 'Status', label: translate('model.Partner.field.status'), alignRight: false },
     { id: '' }
   ];
 
@@ -131,8 +140,7 @@ export default function ExcerciseList() {
 
   const handleSelectAllClick = (checked: boolean) => {
     if (checked) {
-      const newSelecteds = partnerSiteList.map((n) => n.name);
-      setSelected(newSelecteds);
+      const newSelecteds = excerciseList.map((n) => n.title);
       return;
     }
     setSelected([]);
@@ -165,7 +173,7 @@ export default function ExcerciseList() {
     setFilterName(filterName);
   };
 
-  const handleDeletePartner = async (id: string) => {
+  const handleDeleteExcercise = async (id: string) => {
     console.log(user?.siteid);
     try {
       await managePartner.deletePartner(id, user?.siteid).then((respone) => {
@@ -183,11 +191,11 @@ export default function ExcerciseList() {
     dispatch(getListExcercise(Number(name), rowsPerPage, page));
   }, [dispatch, rowsPerPage, page]);
 
-  const emptyRows = !isLoading && !partnerSiteList;
+  const emptyRows = !isLoading && !excerciseList;
 
-  const filteredDiver = applySortFilter(partnerSiteList, getComparator(order, orderBy), filterName);
+  const filteredDiver = applySortFilter(excerciseList, getComparator(order, orderBy), filterName);
 
-  const isDiverNotFound = partnerSiteList.length === 0 && isLoading;
+  const isDiverNotFound = excerciseList.length === 0 && isLoading;
   // if (companiesList !== null) {
   //   companiesList.map((item, index) => {
   //     return (
@@ -220,7 +228,7 @@ export default function ExcerciseList() {
           }
         />
         <Card>
-          <PartnerListToolbar
+          <ExcerciseToolBar
             numSelected={selected.length}
             filterName={filterName}
             onFilterName={handleFilterByName}
@@ -234,19 +242,28 @@ export default function ExcerciseList() {
                     order={order}
                     orderBy={orderBy}
                     headLabel={TABLE_HEAD}
-                    rowCount={partnerSiteList.length}
+                    rowCount={excerciseList.length}
                     numSelected={selected.length}
                     onRequestSort={handleRequestSort}
                     onSelectAllClick={handleSelectAllClick}
                   />
                   <TableBody>
                     {filteredDiver.map((row) => {
-                      const { id, name, phone, email, address, partnerType, status } = row;
+                      const {
+                        id,
+                        title,
+                        description,
+                        bodyposition,
+                        practiceSchedule,
+                        practicetime,
+                        levelexercises,
+                        durationvideo
+                      } = row;
                       const isItemSelected = selected.indexOf(name) !== -1;
                       return (
                         <TableRow
                           hover
-                          key={id}
+                          key={id.toString()}
                           tabIndex={-1}
                           role="checkbox"
                           selected={isItemSelected}
@@ -263,11 +280,13 @@ export default function ExcerciseList() {
                               </Typography>
                             </Stack>
                           </TableCell> */}
-                          <TableCell align="left">{name}</TableCell>
-                          <TableCell align="left">{phone}</TableCell>
-                          <TableCell align="left">{email}</TableCell>
-                          <TableCell align="left">{address}</TableCell>
-                          <TableCell align="left">
+                          <TableCell align="left">{title}</TableCell>
+                          {/* <TableCell align="left">{description}</TableCell> */}
+                          <TableCell align="left">{bodyposition}</TableCell>
+                          <TableCell align="left">{practiceSchedule}</TableCell>
+                          <TableCell align="center">{practicetime}</TableCell>
+                          <TableCell align="center">{levelexercises}</TableCell>
+                          {/* <TableCell align="left">
                             <Label
                               variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
                               color={(status === 0 && 'error') || 'success'}
@@ -276,7 +295,7 @@ export default function ExcerciseList() {
                                 ? translate('Status.availble')
                                 : translate('Status.unAvailble')}
                             </Label>
-                          </TableCell>
+                          </TableCell> */}
                           {/* <TableCell align="left">
                             <Label
                               variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
@@ -287,10 +306,10 @@ export default function ExcerciseList() {
                           </TableCell> */}
 
                           <TableCell align="right">
-                            <PartnerMoreMenu
-                              onDelete={() => handleDeletePartner(id.toString())}
-                              diverID={id.toString()}
-                              status={status.toString()}
+                            <ExcerciseMoreMenu
+                              onDelete={() => handleDeleteExcercise(id.toString())}
+                              excerciseID={id.toString()}
+                              status="true"
                             />
                           </TableCell>
                         </TableRow>
