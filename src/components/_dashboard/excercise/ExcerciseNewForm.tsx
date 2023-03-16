@@ -108,7 +108,12 @@ export default function ExcerciseNewForm({ isEdit, currentExcercise }: UserNewFo
     initialValues: {
       id: currentExcercise?.id || '',
       title: currentExcercise?.title || '',
-      description: currentExcercise?.description || ''
+      description: currentExcercise?.description || '',
+      bodyposition: currentExcercise?.bodyposition || '',
+      practiceSchedule: currentExcercise?.practiceSchedule || '',
+      practicetime: currentExcercise?.practicetime || 0,
+      levelexercises: currentExcercise?.levelexercises || '',
+      durationvideo: currentExcercise?.durationvideo || ''
       // mediaUrl: currentService?.mediaUrl || '',
       // status: currentService?.status || 0,
       // site: currentService?.site || null,
@@ -282,7 +287,7 @@ export default function ExcerciseNewForm({ isEdit, currentExcercise }: UserNewFo
                   <TextField
                     fullWidth
                     label={translate('model.Product.field.name')}
-                    {...getFieldProps('name')}
+                    {...getFieldProps('title')}
                     error={Boolean(touched.title && errors.title)}
                     helperText={touched.title && errors.title}
                   />
@@ -315,32 +320,27 @@ export default function ExcerciseNewForm({ isEdit, currentExcercise }: UserNewFo
                 </Stack> */}
 
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
-                  {/* <TextField
-                    fullWidth
-                    label="Duration"
-                    {...getFieldProps('duration')}
-                    error={Boolean(touched.duration && errors.duration)}
-                    helperText={touched.duration && errors.duration}
-                  /> */}
-                  <TextField
-                    fullWidth
-                    label={translate('model.Product.field.price')}
-                    {...getFieldProps('price')}
-                    error={Boolean(touched.title && errors.title)}
-                    helperText={touched.title && errors.title}
-                    type="number"
-                  />
-                </Stack>
-
-                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
                   <TextField
                     fullWidth
                     label={translate('model.Product.field.description')}
                     {...getFieldProps('description')}
                     error={Boolean(touched.description && errors.description)}
                     helperText={touched.description && errors.description}
+                    multiline
+                    rows={2}
                   />
                 </Stack>
+
+                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
+                  <TextField
+                    fullWidth
+                    label="bodyposition"
+                    {...getFieldProps('bodyposition')}
+                    error={Boolean(touched.bodyposition && errors.bodyposition)}
+                    helperText={touched.bodyposition && errors.bodyposition}
+                  />
+                </Stack>
+
 
                 {/* {isEdit && (
                   <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
