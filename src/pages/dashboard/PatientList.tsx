@@ -27,14 +27,14 @@ import {
 
 // redux
 import { RootState, useDispatch, useSelector } from '../../redux/store';
-import { getListDiver, deleteDiver } from '../../redux/slices/diver';
+import { getListPatient, deleteDiver } from '../../redux/slices/patient';
 
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // hooks
 import useSettings from '../../hooks/useSettings';
 // @types
-import { Diver } from '../../@types/diver';
+import { Patient } from '../../@types/patient';
 // components
 import Page from '../../components/Page';
 import Label from '../../components/Label';
@@ -42,9 +42,9 @@ import Scrollbar from '../../components/Scrollbar';
 import SearchNotFound from '../../components/SearchNotFound';
 import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
 import {
-  DiverListHead,
-  DiverListToolbar,
-  DiverMoreMenu
+  PatientListHead,
+  PatientListToolbar,
+  PatientMoreMenu
 } from '../../components/_dashboard/diver/list';
 
 // ----------------------------------------------------------------------
@@ -78,7 +78,8 @@ function getComparator(order: string, orderBy: string) {
     : (a: Anonymous, b: Anonymous) => -descendingComparator(a, b, orderBy);
 }
 
-function applySortFilter(array: Diver[], comparator: (a: any, b: any) => number, query: string) {
+function applySortFilter(array: Patient[], comparator: (a: any, b: any) => number, query: string) {
+  console.log(array);
   const stabilizedThis = array.map((el, index) => [el, index] as const);
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
@@ -96,7 +97,7 @@ export default function UserList() {
   const { enqueueSnackbar } = useSnackbar();
   const theme = useTheme();
   const dispatch = useDispatch();
-  const diverList = useSelector((state: RootState) => state.diver.diverList);
+  const diverList = useSelector((state: RootState) => state.patient.patientList);
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState<'asc' | 'desc'>('asc');
   const [selected, setSelected] = useState<string[]>([]);
@@ -112,7 +113,7 @@ export default function UserList() {
 
   const handleSelectAllClick = (checked: boolean) => {
     if (checked) {
-      const newSelecteds = diverList.map((n) => n.name);
+      const newSelecteds = diverList.map((n: any) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -151,7 +152,7 @@ export default function UserList() {
       await manageDiver.deleteDiver(id).then((respone) => {
         if (respone.status === 200) {
           enqueueSnackbar('Delete success', { variant: 'success' });
-          dispatch(getListDiver());
+          dispatch(getListPatient());
         }
       });
     } catch (error) {
@@ -160,7 +161,7 @@ export default function UserList() {
   };
 
   useEffect(() => {
-    dispatch(getListDiver());
+    dispatch(getListPatient());
   }, [dispatch]);
 
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - diverList.length) : 0;
@@ -179,14 +180,14 @@ export default function UserList() {
   // }
 
   return (
-    <Page title="Diver: List">
+    <Page title="Danh sách bệnh nhân">
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <HeaderBreadcrumbs
-          heading="Diver list"
+          heading="Danh sách bệnh nhân"
           links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'Diver', href: PATH_DASHBOARD.diver.root },
-            { name: 'List' }
+            { name: 'Bảng điều khiển', href: PATH_DASHBOARD.root },
+            { name: 'Bệnh nhân', href: PATH_DASHBOARD.diver.root },
+            { name: 'Danh sách' }
           ]}
           action={
             <Button
@@ -200,7 +201,7 @@ export default function UserList() {
           }
         />
         <Card>
-          <DiverListToolbar
+          <PatientListToolbar
             numSelected={selected.length}
             filterName={filterName}
             onFilterName={handleFilterByName}
@@ -209,7 +210,7 @@ export default function UserList() {
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
               <Table>
-                <DiverListHead
+                <PatientListHead
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
@@ -265,7 +266,7 @@ export default function UserList() {
                           </TableCell> */}
 
                           <TableCell align="right">
-                            <DiverMoreMenu
+                            <PatientMoreMenu
                               onDelete={() => handleDeleteDiver(id.toString())}
                               diverID={id.toString()}
                             />

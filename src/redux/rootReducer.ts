@@ -7,7 +7,7 @@ import chatReducer from './slices/chat';
 import blogReducer from './slices/blog';
 import userReducer from './slices/user';
 import gardenReducer from './slices/garden';
-import diverReducer from './slices/diver';
+import patientReducer from './slices/patient';
 import orderReducer from './slices/order';
 import serviceReducer from './slices/service';
 import productReducer from './slices/product';
@@ -40,7 +40,7 @@ const rootReducer = combineReducers({
   chat: chatReducer,
   blog: blogReducer,
   user: userReducer,
-  diver: diverReducer,
+  patient: patientReducer,
   service: serviceReducer,
   order: orderReducer,
   groupRole: groupRoleReducer,

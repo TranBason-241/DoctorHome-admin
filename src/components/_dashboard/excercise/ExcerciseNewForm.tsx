@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import * as Yup from 'yup';
 import { useSnackbar } from 'notistack5';
 import { useNavigate } from 'react-router-dom';
@@ -24,7 +25,8 @@ import {
   InputAdornment,
   FormHelperText,
   FormControlLabel,
-  Tab
+  Tab,
+  CardMedia
 } from '@material-ui/core';
 import useAuth from 'hooks/useAuth';
 import useLocales from 'hooks/useLocales';
@@ -113,7 +115,8 @@ export default function ExcerciseNewForm({ isEdit, currentExcercise }: UserNewFo
       practiceSchedule: currentExcercise?.practiceSchedule || '',
       practicetime: currentExcercise?.practicetime || 0,
       levelexercises: currentExcercise?.levelexercises || '',
-      durationvideo: currentExcercise?.durationvideo || ''
+      durationvideo: currentExcercise?.durationvideo || '',
+      linkvideo: currentExcercise?.linkvideo || ''
       // mediaUrl: currentService?.mediaUrl || '',
       // status: currentService?.status || 0,
       // site: currentService?.site || null,
@@ -274,8 +277,14 @@ export default function ExcerciseNewForm({ isEdit, currentExcercise }: UserNewFo
     //   productTypeList.find((e: ProductType) => e.id == currentExcercise?.categoryId)
     // );
     // setImg(currentExcercise?.images);
+    console.log(currentExcercise?.linkvideo);
   }, [currentExcercise]);
 
+  const video = `${currentExcercise?.linkvideo?.toString()}`;
+  const StyledVideo = styled('video')({
+    width: '100%',
+    height: 'auto'
+  });
   return (
     <FormikProvider value={formik}>
       <Form noValidate autoComplete="off" onSubmit={handleSubmit}>
@@ -334,14 +343,48 @@ export default function ExcerciseNewForm({ isEdit, currentExcercise }: UserNewFo
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
                   <TextField
                     fullWidth
-                    label="bodyposition"
+                    label="Vị trí cơ thể"
                     {...getFieldProps('bodyposition')}
                     error={Boolean(touched.bodyposition && errors.bodyposition)}
                     helperText={touched.bodyposition && errors.bodyposition}
                   />
                 </Stack>
+                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
+                  <TextField
+                    fullWidth
+                    label="Lịch thực hành"
+                    {...getFieldProps('practiceSchedule')}
+                    error={Boolean(touched.practiceSchedule && errors.practiceSchedule)}
+                    helperText={touched.practiceSchedule && errors.practiceSchedule}
+                  />
+                </Stack>
 
-
+                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
+                  <TextField
+                    fullWidth
+                    label="Thời gian thực hành"
+                    {...getFieldProps('practicetime')}
+                    error={Boolean(touched.practicetime && errors.practicetime)}
+                    helperText={touched.practicetime && errors.practicetime}
+                  />
+                </Stack>
+                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
+                  <TextField
+                    fullWidth
+                    label="Cấp độ bài tập"
+                    {...getFieldProps('levelexercises')}
+                    error={Boolean(touched.levelexercises && errors.levelexercises)}
+                    helperText={touched.levelexercises && errors.levelexercises}
+                  />
+                </Stack>
+                <Card sx={{ maxWidth: 700 }}>
+                  <StyledVideo
+                    src={currentExcercise?.linkvideo.toString()}
+                    title="Video Title"
+                    controls
+                    controlsList="nodownload fullscreen"
+                  />
+                </Card>
                 {/* {isEdit && (
                   <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
                     <Autocomplete
@@ -366,7 +409,7 @@ export default function ExcerciseNewForm({ isEdit, currentExcercise }: UserNewFo
                   </Stack>
                 )} */}
 
-                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
+                {/* <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
                   <Autocomplete
                     fullWidth
                     disablePortal
@@ -389,7 +432,7 @@ export default function ExcerciseNewForm({ isEdit, currentExcercise }: UserNewFo
                       />
                     )}
                   />
-                </Stack>
+                </Stack> */}
                 {/* {img && (
                   <>
                     <LivePreview files={img} onRemove={handleRemoveImage} />

@@ -161,6 +161,11 @@ export const PATH_DASHBOARD = {
     list: path(ROOTS_DASHBOARD, '/excercise/exercisetype/:name/list'),
     newExerciseType: path(ROOTS_DASHBOARD, '/exercisetype/new'),
     editByExerciseTypeId: path(ROOTS_DASHBOARD, '/:name/edit')
+  },
+  patient: {
+    root: path(ROOTS_DASHBOARD, '/patient'),
+    list: path(ROOTS_DASHBOARD, '/patient/list'),
+    newPatient: path(ROOTS_DASHBOARD, '/patient/new')
   }
 };
 

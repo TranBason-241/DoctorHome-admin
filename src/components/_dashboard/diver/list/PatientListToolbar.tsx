@@ -38,17 +38,17 @@ const SearchStyle = styled(OutlinedInput)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-type DiverListToolbarProps = {
+type PatientListToolbarProps = {
   numSelected: number;
   filterName: string;
   onFilterName: (value: string) => void;
 };
 
-export default function DiverListToolbar({
+export default function PatientListToolbar({
   numSelected,
   filterName,
   onFilterName
-}: DiverListToolbarProps) {
+}: PatientListToolbarProps) {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
 
@@ -64,7 +64,7 @@ export default function DiverListToolbar({
       <SearchStyle
         value={filterName}
         onChange={(e) => onFilterName(e.target.value)}
-        placeholder="Search diver..."
+        placeholder="Tìm kiếm bệnh nhân..."
         startAdornment={
           <InputAdornment position="start">
             <Box component={Icon} icon={searchFill} sx={{ color: 'text.disabled' }} />

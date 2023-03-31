@@ -54,7 +54,7 @@ export default function ExerciseTypeCreate() {
             levelexercises: response.data.levelexercises,
             durationvideo: response.data.durationvideo
           };
-          console.log(data);
+          // console.log(data);
           setcurrentExcercise(data);
         }
       });

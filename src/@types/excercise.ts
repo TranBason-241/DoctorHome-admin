@@ -1,12 +1,12 @@
 export type Excercise = {
-  id: String;
-  title: String;
-  description: String;
+  id: string;
+  title: string;
+  description: string;
   thumbnail: number;
-  linkvideo: String;
-  bodyposition: String;
-  practiceSchedule: String;
+  linkvideo: string;
+  bodyposition: string;
+  practiceSchedule: string;
   practicetime: number;
-  levelexercises: String;
-  durationvideo: String;
+  levelexercises: string;
+  durationvideo: string;
 };

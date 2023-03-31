@@ -85,10 +85,28 @@ function AuthProvider({ children }: { children: ReactNode }) {
           axios.defaults.headers.common = {
             Authorization: `Bearer ${accessToken}`
           };
-          const response = await axios.get('/api/v1/account-info', {
-            params: { token: accessToken }
-          });
-          const user = response.data;
+          console.log(`Bearer ${accessToken}`);
+          // const response = await axios.get('/api/v1/account-info', {
+          //   params: { token: accessToken }
+          // });
+          // const user = response.data;
+          const user = {
+            id: 'string',
+            displayName: 'string',
+            email: 'string',
+            password: 'string',
+            photoURL: 'string',
+            phoneNumber: 'string',
+            country: 'string',
+            address: 'string',
+            state: 'string',
+            city: 'string',
+            zipCode: 'string',
+            about: 'string',
+            role: 'string',
+            isPublic: true
+          };
+
           dispatch({
             type: Types.Initial,
             payload: {
@@ -116,35 +134,48 @@ function AuthProvider({ children }: { children: ReactNode }) {
         });
       }
     };
-
     initialize();
   }, []);
 
   const login = async (id: string, pass: string) => {
-    await axios
-      .post('/api/v1/login', {
-        username: id,
-        password: pass
-      })
-      .then(async (res: any) => {
-        localStorage.setItem('accessToken', res.data.token);
-        setSession(res.data.token);
-        // set bearer token
-        axios.defaults.headers.common = {
-          Authorization: `Bearer ${res.data.token}`
-        };
-        const response = await axios.get('/api/v1/account-info', {
-          params: { token: res.data.token }
-        });
-        const user = response.data;
+    await axios.post('/api/v1/fake-login?email=op%40gmail.com').then(async (res: any) => {
+      console.log(`Bearer ${res.data.accessToken}`);
+      localStorage.setItem('accessToken', res.data.accessToken);
+      setSession(res.data.accessToken);
+      // set bearer token
+      axios.defaults.headers.common = {
+        Authorization: `Bearer ${res.data.accessToken}`
+      };
 
-        dispatch({
-          type: Types.Login,
-          payload: {
-            user
-          }
-        });
+      // const response = await axios.get('/api/v1/account-info', {
+      //   params: { token: res.data.token }
+      // });
+      // const user = response.data;
+
+      // hard usser
+      const user = {
+        id: 'string',
+        displayName: 'string',
+        email: 'string',
+        password: 'string',
+        photoURL: 'string',
+        phoneNumber: 'string',
+        country: 'string',
+        address: 'string',
+        state: 'string',
+        city: 'string',
+        zipCode: 'string',
+        about: 'string',
+        role: 'string',
+        isPublic: true
+      };
+      dispatch({
+        type: Types.Login,
+        payload: {
+          user
+        }
       });
+    });
   };
 
   const register = async (email: string, password: string, firstName: string, lastName: string) => {
@@ -155,7 +186,6 @@ function AuthProvider({ children }: { children: ReactNode }) {
       lastName
     });
     const { accessToken, user } = response.data;
-
     window.localStorage.setItem('accessToken', accessToken);
     dispatch({
       type: Types.Register,
@@ -172,7 +202,9 @@ function AuthProvider({ children }: { children: ReactNode }) {
 
   const resetPassword = (email: string) => console.log(email);
 
-  const updateProfile = () => {};
+  const updateProfile = () => {
+    console.log('update profile');
+  };
 
   return (
     <AuthContext.Provider

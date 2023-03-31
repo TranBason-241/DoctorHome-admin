@@ -29,7 +29,7 @@ import useLocales from 'hooks/useLocales';
 import useAuth from 'hooks/useAuth';
 // redux
 import { RootState, useDispatch, useSelector } from '../../redux/store';
-import { getListDiver, deleteDiver } from '../../redux/slices/diver';
+// import { getListDiver, deleteDiver } from '../../redux/slices/patient';
 import { getListService, deleteService } from '../../redux/slices/service';
 
 // routes

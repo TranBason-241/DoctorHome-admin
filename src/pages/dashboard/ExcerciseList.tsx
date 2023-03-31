@@ -32,7 +32,7 @@ import useAuth from 'hooks/useAuth';
 import useLocales from 'hooks/useLocales';
 // redux
 import { RootState, useDispatch, useSelector } from '../../redux/store';
-import { getListDiver, deleteDiver } from '../../redux/slices/diver';
+import { getListPatient, deleteDiver } from '../../redux/slices/patient';
 import { getListExcercise } from '../../redux/slices/excercise';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
@@ -49,9 +49,9 @@ import Scrollbar from '../../components/Scrollbar';
 import SearchNotFound from '../../components/SearchNotFound';
 import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
 import {
-  DiverListHead,
-  DiverListToolbar,
-  DiverMoreMenu
+  PatientListHead,
+  PatientListToolbar,
+  PatientMoreMenu
 } from '../../components/_dashboard/diver/list';
 
 import {
@@ -238,7 +238,7 @@ export default function ExcerciseList() {
             {!isLoading ? (
               <TableContainer sx={{ minWidth: 800 }}>
                 <Table>
-                  <DiverListHead
+                  <PatientListHead
                     order={order}
                     orderBy={orderBy}
                     headLabel={TABLE_HEAD}

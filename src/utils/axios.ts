@@ -9,6 +9,7 @@ axiosInstance.interceptors.request.use(
     axios.defaults.headers.common = {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`
     };
+    console.log(`Bearer ${localStorage.getItem('accessToken')}`);
     return config;
   },
   (error) => {

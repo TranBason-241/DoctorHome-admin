@@ -30,7 +30,7 @@ import { getListGroup } from 'redux/slices/group';
 // redux
 import { RootState, useDispatch, useSelector } from '../../redux/store';
 
-import { getListDiver, deleteDiver } from '../../redux/slices/diver';
+import { getListPatient, deleteDiver } from '../../redux/slices/patient';
 import { getListService, deleteService } from '../../redux/slices/service';
 import { getListGroupRole, deleteGroupRole } from '../../redux/slices/groupRole';
 
@@ -201,16 +201,6 @@ export default function GroupList() {
             { name: translate('root.group'), href: PATH_DASHBOARD.group.root },
             { name: translate('root.list') }
           ]}
-          //   action={
-          //     <Button
-          //       variant="contained"
-          //       component={RouterLink}
-          //       to={PATH_DASHBOARD.groupRole.newGroupRole}
-          //       startIcon={<Icon icon={plusFill} />}
-          //     >
-          //       New groupRole
-          //     </Button>
-          //   }
         />
         <Card>
           <GroupToolBar

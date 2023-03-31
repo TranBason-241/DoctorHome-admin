@@ -85,8 +85,8 @@ export default function SidebarConfig() {
         //   ]
         // },
         {
-          title: 'Danh sách Bài Tập',
-          path: PATH_DASHBOARD.partner.list,
+          title: 'Danh sách bệnh nhân',
+          path: PATH_DASHBOARD.patient.list,
           icon: ICONS.baiTap
         },
         {

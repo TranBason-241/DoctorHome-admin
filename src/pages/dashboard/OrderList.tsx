@@ -36,7 +36,7 @@ import OrderMoreMenu from 'components/_dashboard/order/list/OrderMoreMenu';
 import useAuth from 'hooks/useAuth';
 // redux
 import { RootState, useDispatch, useSelector } from '../../redux/store';
-import { getListDiver, deleteDiver } from '../../redux/slices/diver';
+import { getListPatient, deleteDiver } from '../../redux/slices/patient';
 import { getListService, deleteService } from '../../redux/slices/service';
 import { getListOrder } from '../../redux/slices/order';
 
@@ -218,16 +218,6 @@ export default function UserList() {
             { name: translate('root.order'), href: PATH_DASHBOARD.order.root },
             { name: translate('root.list') }
           ]}
-          //   action={
-          //     <Button
-          //       variant="contained"
-          //       component={RouterLink}
-          //       to={PATH_DASHBOARD.service.newService}
-          //       startIcon={<Icon icon={plusFill} />}
-          //     >
-          //       New Service
-          //     </Button>
-          //   }
         />
         <Card>
           <Grid container>

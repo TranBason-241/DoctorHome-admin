@@ -1,11 +1,11 @@
 import { manageCoral } from '_apis_/coral';
 import { map, filter } from 'lodash';
 import { createSlice } from '@reduxjs/toolkit';
-import { manageDiver } from '_apis_/diver';
+import { managePatient } from '_apis_/patient';
 import { dispatch } from '../store';
 // utils
 import axios from '../../utils/axios';
-import { Diver } from '../../@types/diver';
+import { Patient } from '../../@types/patient';
 import {
   Friend,
   Gallery,
@@ -24,22 +24,22 @@ import {
 
 // ----------------------------------------------------------------------
 
-type DiverState = {
+type PatientState = {
   isLoading: boolean;
   error: boolean;
   followers: Follower[];
-  diverList: Diver[];
+  patientList: Patient[];
 };
 
-const initialState: DiverState = {
+const initialState: PatientState = {
   isLoading: false,
   error: false,
   followers: [],
-  diverList: []
+  patientList: []
 };
 
 const slice = createSlice({
-  name: 'diver',
+  name: 'patient',
   initialState,
   reducers: {
     // START LOADING
@@ -59,16 +59,16 @@ const slice = createSlice({
       state.followers = action.payload;
     },
 
-    // GET LIST Diver
-    getListDiver(state, action) {
+    // GET LIST Patient
+    getListPatient(state, action) {
       state.isLoading = false;
-      state.diverList = action.payload;
+      state.patientList = action.payload;
     },
 
     // DELETE DIVER
     deleteDiver(state, action) {
-      const deleteDiver = filter(state.diverList, (diver) => diver.id !== action.payload);
-      state.diverList = deleteDiver;
+      const deletePatient = filter(state.patientList, (patient) => patient.id !== action.payload);
+      state.patientList = deletePatient;
     }
   }
 });
@@ -81,13 +81,14 @@ export const { deleteDiver } = slice.actions;
 // ----------------------------------------------------------------------
 
 // get Diver
-export function getListDiver() {
+export function getListPatient() {
   return async () => {
     dispatch(slice.actions.startLoading());
     try {
-      manageDiver.getListDiver().then((response) => {
+      managePatient.getListPatient().then((response) => {
         if (response.status == 200) {
-          dispatch(slice.actions.getListDiver(response.data.items));
+          console.log(response.data);
+          dispatch(slice.actions.getListPatient(response.data.content));
         }
       });
     } catch (error) {

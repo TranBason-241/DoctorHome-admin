@@ -27,7 +27,7 @@ import {
 import { manageGroupRole } from '_apis_/groupRole';
 // redux
 import { RootState, useDispatch, useSelector } from '../../redux/store';
-import { getListDiver, deleteDiver } from '../../redux/slices/diver';
+import { getListPatient, deleteDiver } from '../../redux/slices/patient';
 import { getListService, deleteService } from '../../redux/slices/service';
 import { getListGroupRole, deleteGroupRole } from '../../redux/slices/groupRole';
 
