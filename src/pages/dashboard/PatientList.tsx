@@ -45,16 +45,15 @@ import {
   PatientListHead,
   PatientListToolbar,
   PatientMoreMenu
-} from '../../components/_dashboard/diver/list';
+} from '../../components/_dashboard/patient/list';
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: 'name', label: 'Name', alignRight: false },
-  { id: 'company', label: 'Phone', alignRight: false },
+  { id: 'name', label: 'Tên', alignRight: false },
+  { id: 'company', label: 'Số điện thoại', alignRight: false },
   { id: 'role', label: 'Email', alignRight: false },
-  { id: 'isVerified', label: 'Address', alignRight: false },
-  { id: 'status', label: 'Status', alignRight: false },
+  { id: 'status', label: 'Trạng thái', alignRight: false },
   { id: '' }
 ];
 
@@ -97,7 +96,9 @@ export default function UserList() {
   const { enqueueSnackbar } = useSnackbar();
   const theme = useTheme();
   const dispatch = useDispatch();
-  const diverList = useSelector((state: RootState) => state.patient.patientList);
+  const patientList = useSelector((state: RootState) => state.patient.patientList);
+  const isLoading = useSelector((state: RootState) => state.patient.isLoading);
+  const totalCount = useSelector((state: RootState) => state.patient.totalCount);
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState<'asc' | 'desc'>('asc');
   const [selected, setSelected] = useState<string[]>([]);
@@ -113,7 +114,7 @@ export default function UserList() {
 
   const handleSelectAllClick = (checked: boolean) => {
     if (checked) {
-      const newSelecteds = diverList.map((n: any) => n.name);
+      const newSelecteds = patientList.map((n: any) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -152,7 +153,7 @@ export default function UserList() {
       await manageDiver.deleteDiver(id).then((respone) => {
         if (respone.status === 200) {
           enqueueSnackbar('Delete success', { variant: 'success' });
-          dispatch(getListPatient());
+          dispatch(getListPatient(rowsPerPage, page));
         }
       });
     } catch (error) {
@@ -161,14 +162,15 @@ export default function UserList() {
   };
 
   useEffect(() => {
-    dispatch(getListPatient());
-  }, [dispatch]);
+    dispatch(getListPatient(rowsPerPage, page));
+    // dispatch(getListService(user?.siteid, rowsPerPage, page));
+  }, [dispatch, rowsPerPage, page]);
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - diverList.length) : 0;
+  const emptyRows = !isLoading && !patientList;
 
-  const filteredDiver = applySortFilter(diverList, getComparator(order, orderBy), filterName);
+  const filteredDiver = applySortFilter(patientList, getComparator(order, orderBy), filterName);
 
-  const isDiverNotFound = filteredDiver.length === 0;
+  const isDiverNotFound = patientList.length === 0 && isLoading;
   // if (companiesList !== null) {
   //   companiesList.map((item, index) => {
   //     return (
@@ -193,10 +195,10 @@ export default function UserList() {
             <Button
               variant="contained"
               component={RouterLink}
-              to={PATH_DASHBOARD.diver.newDiver}
+              to={PATH_DASHBOARD.patient.list}
               startIcon={<Icon icon={plusFill} />}
             >
-              New Diver
+              Thêm bệnh nhân
             </Button>
           }
         />
@@ -214,49 +216,57 @@ export default function UserList() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={diverList.length}
+                  rowCount={patientList.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
                 />
                 <TableBody>
-                  {filteredDiver
-                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map((row) => {
-                      const { id, name, phone, status, email, address, imageUrl } = row;
-                      const isItemSelected = selected.indexOf(name) !== -1;
-                      return (
-                        <TableRow
-                          hover
-                          key={id}
-                          tabIndex={-1}
-                          role="checkbox"
-                          selected={isItemSelected}
-                          aria-checked={isItemSelected}
-                        >
-                          <TableCell padding="checkbox">
-                            {/* <Checkbox checked={isItemSelected} onClick={() => handleClick(name)} /> */}
-                          </TableCell>
-                          <TableCell component="th" scope="row" padding="none">
-                            <Stack direction="row" alignItems="center" spacing={2}>
-                              <Avatar alt={name} src={imageUrl} />
-                              <Typography variant="subtitle2" noWrap>
-                                {name}
-                              </Typography>
-                            </Stack>
-                          </TableCell>
-                          <TableCell align="left">{phone}</TableCell>
-                          <TableCell align="left">{email}</TableCell>
-                          <TableCell align="left">{address}</TableCell>
-                          <TableCell align="left">
-                            <Label
-                              variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
-                              color={(status === 0 && 'error') || 'success'}
-                            >
-                              {status == 1 ? 'Available' : 'deleted'}
-                            </Label>
-                          </TableCell>
-                          {/* <TableCell align="left">
+                  {filteredDiver.map((row) => {
+                    const {
+                      id,
+                      name,
+                      phone,
+                      isActive,
+                      email,
+                      backgroundDisease,
+                      avatar,
+                      allergy,
+                      bloodGroup
+                    } = row;
+                    const isItemSelected = selected.indexOf(name) !== -1;
+                    return (
+                      <TableRow
+                        hover
+                        key={id}
+                        tabIndex={-1}
+                        role="checkbox"
+                        selected={isItemSelected}
+                        aria-checked={isItemSelected}
+                      >
+                        <TableCell padding="checkbox">
+                          {/* <Checkbox checked={isItemSelected} onClick={() => handleClick(name)} /> */}
+                        </TableCell>
+                        <TableCell component="th" scope="row" padding="none">
+                          <Stack direction="row" alignItems="center" spacing={2}>
+                            <Avatar alt={name} src={avatar} />
+                            <Typography variant="subtitle2" noWrap>
+                              {name}
+                            </Typography>
+                          </Stack>
+                        </TableCell>
+                        <TableCell align="left">{phone}</TableCell>
+                        <TableCell align="left">{email}</TableCell>
+
+                        <TableCell align="left">
+                          <Label
+                            variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
+                            color={(!isActive && 'error') || 'success'}
+                          >
+                            {isActive ? 'Active' : 'Inactive'}
+                          </Label>
+                        </TableCell>
+                        {/* <TableCell align="left">
                             <Label
                               variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
                               color={(status == 0 && 'error') || 'success'}
@@ -265,16 +275,16 @@ export default function UserList() {
                             </Label>
                           </TableCell> */}
 
-                          <TableCell align="right">
-                            <PatientMoreMenu
-                              onDelete={() => handleDeleteDiver(id.toString())}
-                              diverID={id.toString()}
-                            />
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })}
-                  {emptyRows > 0 && (
+                        <TableCell align="right">
+                          <PatientMoreMenu
+                            onDelete={() => handleDeleteDiver(id.toString())}
+                            patientID={id.toString()}
+                          />
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                  {emptyRows && (
                     <TableRow style={{ height: 53 * emptyRows }}>
                       <TableCell colSpan={6} />
                     </TableRow>
@@ -294,13 +304,13 @@ export default function UserList() {
           </Scrollbar>
 
           <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
+            rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
             component="div"
-            count={diverList.length}
+            count={totalCount}
             rowsPerPage={rowsPerPage}
             page={page}
-            onPageChange={(e, page) => setPage(page)}
-            onRowsPerPageChange={(e) => handleChangeRowsPerPage}
+            onPageChange={(e, value) => setPage(value)}
+            onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </Card>
       </Container>

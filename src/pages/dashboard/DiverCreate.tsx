@@ -25,7 +25,7 @@ export default function DiverCreate() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
 
-  const { diverList } = useSelector((state: RootState) => state.diver);
+  const { patientList } = useSelector((state: RootState) => state.patient);
   const isEdit = pathname.includes('edit');
   const { name } = useParams();
   // const currentDiver = diverList.find((diver) => paramCase(diver.name) === name);

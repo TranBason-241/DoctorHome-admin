@@ -18,6 +18,7 @@ import groupReducer from './slices/group';
 import partnerReducer from './slices/partner';
 import exerciseTypeReducer from './slices/exerciseType';
 import excerciseReducer from './slices/excercise';
+import doctorReducer from './slices/doctor';
 
 // ----------------------------------------------------------------------
 
@@ -51,6 +52,7 @@ const rootReducer = combineReducers({
   partner: partnerReducer,
   exerciseType: exerciseTypeReducer,
   excercise: excerciseReducer,
+  doctor: doctorReducer,
   product: persistReducer(productPersistConfig, productReducer)
 });
 

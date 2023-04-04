@@ -165,7 +165,14 @@ export const PATH_DASHBOARD = {
   patient: {
     root: path(ROOTS_DASHBOARD, '/patient'),
     list: path(ROOTS_DASHBOARD, '/patient/list'),
-    newPatient: path(ROOTS_DASHBOARD, '/patient/new')
+    newPatient: path(ROOTS_DASHBOARD, '/patient/new'),
+    editByPatientId: path(ROOTS_DASHBOARD, '/:name/edit')
+  },
+  doctor: {
+    root: path(ROOTS_DASHBOARD, '/doctor'),
+    list: path(ROOTS_DASHBOARD, '/doctor/list'),
+    newDoctor: path(ROOTS_DASHBOARD, '/doctor/new'),
+    editByDoctorId: path(ROOTS_DASHBOARD, '/:name/edit')
   }
 };
 

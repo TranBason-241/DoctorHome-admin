@@ -114,47 +114,48 @@ export default function ExcersiceTypeNewForm({ isEdit, currentExcerciseType }: U
       title: currentExcerciseType?.title || '',
       description: currentExcerciseType?.description || ''
     },
-    validationSchema: hasquantity ? NewProductSchemaQuantity : NewProductSchema,
+    // validationSchema: hasquantity ? NewProductSchemaQuantity : NewProductSchema,
     onSubmit: async (values, { setSubmitting, resetForm, setErrors }) => {
-      let flag = false;
-      try {
-        const bodyFormData = new FormData();
-        bodyFormData.append('title', values.title.toString());
-        bodyFormData.append('Description', values.description.toString());
-        if (!isEdit) {
-          await manageExerciseType.updateExerciseType(values).then((response) => {
-            if (response.status == 200) {
-              flag = true;
-            }
-          });
-        } else {
-          await manageExerciseType.updateExerciseType(values).then((response) => {
-            if (response.status == 200) {
-              flag = true;
-            }
-          });
-        }
-        console.log(values);
-        if (flag) {
-          resetForm();
-          setSubmitting(false);
-          enqueueSnackbar(
-            !isEdit ? translate('snackBar.CreateSuccess') : translate('snackBar.UdpateSuccess'),
-            {
-              variant: 'success'
-            }
-          );
-          navigate(PATH_DASHBOARD.service.list);
-        } else {
-          enqueueSnackbar(
-            !isEdit ? translate('snackBar.CreateError') : translate('snackBar.UpdateError'),
-            { variant: 'error' }
-          );
-        }
-      } catch (error) {
-        console.error(error);
-        setSubmitting(false);
-      }
+      // let flag = false;
+      // try {
+      //   const bodyFormData = new FormData();
+      //   bodyFormData.append('title', values.title.toString());
+      //   bodyFormData.append('Description', values.description.toString());
+      //   if (!isEdit) {
+      //     await manageExerciseType.updateExerciseType(values).then((response) => {
+      //       if (response.status == 200) {
+      //         flag = true;
+      //       }
+      //     });
+      //   } else {
+      //     await manageExerciseType.updateExerciseType(values).then((response) => {
+      //       if (response.status == 200) {
+      //         flag = true;
+      //       }
+      //     });
+      //   }
+      //   console.log(values);
+      //   if (flag) {
+      //     resetForm();
+      //     setSubmitting(false);
+      //     enqueueSnackbar(
+      //       !isEdit ? translate('snackBar.CreateSuccess') : translate('snackBar.UdpateSuccess'),
+      //       {
+      //         variant: 'success'
+      //       }
+      //     );
+      //     navigate(PATH_DASHBOARD.service.list);
+      //   } else {
+      //     enqueueSnackbar(
+      //       !isEdit ? translate('snackBar.CreateError') : translate('snackBar.UpdateError'),
+      //       { variant: 'error' }
+      //     );
+      //   }
+      // } catch (error) {
+      //   console.error(error);
+      //   setSubmitting(false);
+      // }
+      alert('coming soon!!!');
     }
   });
 

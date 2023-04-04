@@ -35,6 +35,7 @@ import { Diver } from '../../../@types/diver';
 //
 import { QuillEditor } from '../../editor';
 import { UploadAvatar } from '../../upload';
+import { Patient } from '../../../@types/patient';
 
 // ----------------------------------------------------------------------
 
@@ -57,12 +58,12 @@ const LabelStyle = styled(Typography)(({ theme }) => ({
 // }));
 // ----------------------------------------------------------------------
 
-type DiverNewFormProps = {
+type PatientNewFormProps = {
   isEdit: boolean;
-  currentDiver?: Diver;
+  currentPatient?: Patient;
 };
 
-export default function DiverNewForm({ isEdit, currentDiver }: DiverNewFormProps) {
+export default function PatientNewForm({ isEdit, currentPatient }: PatientNewFormProps) {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const [imageFILE, setImageFILE] = useState('');
@@ -82,64 +83,63 @@ export default function DiverNewForm({ isEdit, currentDiver }: DiverNewFormProps
   });
 
   useEffect(() => {
-    setEnumStatus(statusOptions.find((e) => e.id == currentDiver?.status) || null);
-  }, [currentDiver]);
+    setEnumStatus(statusOptions.find((e) => e.id == (currentPatient?.isActive ? 1 : 0)) || null);
+  }, [currentPatient]);
 
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      id: currentDiver?.id || '',
-      username: currentDiver?.username || '',
-      name: currentDiver?.name || '',
-      phone: currentDiver?.phone || '',
-      email: currentDiver?.email || '',
-      address: currentDiver?.address || '',
-      imageUrl: currentDiver?.imageUrl || null,
-      password: currentDiver?.password || '',
-      status: currentDiver?.status || 1
+      id: currentPatient?.id || '',
+      email: currentPatient?.email || '',
+      name: currentPatient?.name || '',
+      phone: currentPatient?.phone || '',
+      backgroundDisease: currentPatient?.backgroundDisease || '',
+      allergy: currentPatient?.allergy || '',
+      bloodGroup: currentPatient?.bloodGroup || '',
+      isActive: currentPatient?.isActive || '',
+      avatar: currentPatient?.avatar || null,
+      healthChecks: currentPatient?.healthChecks || []
     },
-    validationSchema: NewProductSchema,
+    // validationSchema: NewProductSchema,
     onSubmit: async (values, { setSubmitting, resetForm, setErrors }) => {
-      let flag = false;
-      try {
-        const bodyFormData = new FormData();
-        if (isEdit) {
-          bodyFormData.append('id', values.id);
-          values.status = enumStatus!.id;
-        }
-        bodyFormData.append('Name', values.name);
-        bodyFormData.append('Phone', values.phone);
-        bodyFormData.append('Email', values.email);
-        bodyFormData.append('Address', values.address);
-        bodyFormData.append('Status', values.status);
-        bodyFormData.append('imageFile', imageFILE);
-        if (!isEdit) {
-          await manageDiver.createDiver(bodyFormData).then((response) => {
-            if (response.status == 200) {
-              flag = true;
-            }
-          });
-        } else {
-          await manageDiver.updateDiver(bodyFormData).then((response) => {
-            if (response.status == 200) {
-              flag = true;
-            }
-          });
-        }
-        if (flag) {
-          resetForm();
-          setSubmitting(false);
-          enqueueSnackbar(!isEdit ? 'Create success' : 'Update success', {
-            variant: 'success'
-          });
-          navigate(PATH_DASHBOARD.diver.list);
-        } else {
-          enqueueSnackbar(!isEdit ? 'Create error' : 'Update error', { variant: 'error' });
-        }
-      } catch (error) {
-        console.error(error);
-        setSubmitting(false);
-      }
+      //   let flag = false;
+      //   try {
+      //     const bodyFormData = new FormData();
+      //     if (isEdit) {
+      //       bodyFormData.append('id', values.id);
+      //     }
+      //     bodyFormData.append('Name', values.name);
+      //     bodyFormData.append('Phone', values.phone);
+      //     bodyFormData.append('Email', values.email);
+      //     bodyFormData.append('imageFile', imageFILE);
+      //     if (!isEdit) {
+      //       await manageDiver.createDiver(bodyFormData).then((response) => {
+      //         if (response.status == 200) {
+      //           flag = true;
+      //         }
+      //       });
+      //     } else {
+      //       await manageDiver.updateDiver(bodyFormData).then((response) => {
+      //         if (response.status == 200) {
+      //           flag = true;
+      //         }
+      //       });
+      //     }
+      //     if (flag) {
+      //       resetForm();
+      //       setSubmitting(false);
+      //       enqueueSnackbar(!isEdit ? 'Create success' : 'Update success', {
+      //         variant: 'success'
+      //       });
+      //       navigate(PATH_DASHBOARD.diver.list);
+      //     } else {
+      //       enqueueSnackbar(!isEdit ? 'Create error' : 'Update error', { variant: 'error' });
+      //     }
+      //   } catch (error) {
+      //     console.error(error);
+      //     setSubmitting(false);
+      //   }
+      alert('Comming soon!!!');
     }
   });
 
@@ -169,10 +169,10 @@ export default function DiverNewForm({ isEdit, currentDiver }: DiverNewFormProps
               <Box sx={{ mb: 5 }}>
                 <UploadAvatar
                   accept="image/*"
-                  file={values.imageUrl}
+                  file={values.avatar}
                   maxSize={3145728}
                   onDrop={handleDrop}
-                  error={Boolean(touched.imageUrl && errors.imageUrl)}
+                  error={Boolean(touched.avatar && errors.avatar)}
                   caption={
                     <Typography
                       variant="caption"
@@ -189,7 +189,7 @@ export default function DiverNewForm({ isEdit, currentDiver }: DiverNewFormProps
                   }
                 />
                 <FormHelperText error sx={{ px: 2, textAlign: 'center' }}>
-                  {touched.imageUrl && errors.imageUrl}
+                  {touched.avatar && errors.avatar}
                 </FormHelperText>
               </Box>
             </Card>
@@ -200,14 +200,14 @@ export default function DiverNewForm({ isEdit, currentDiver }: DiverNewFormProps
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
                   <TextField
                     fullWidth
-                    label="Full Name"
+                    label="Họ và tên"
                     {...getFieldProps('name')}
                     error={Boolean(touched.name && errors.name)}
                     helperText={touched.name && errors.name}
                   />
                   <TextField
                     fullWidth
-                    label="Phone"
+                    label="Số điện thoại"
                     {...getFieldProps('phone')}
                     error={Boolean(touched.phone && errors.phone)}
                     helperText={touched.phone && errors.phone}
@@ -222,12 +222,30 @@ export default function DiverNewForm({ isEdit, currentDiver }: DiverNewFormProps
                     error={Boolean(touched.email && errors.email)}
                     helperText={touched.email && errors.email}
                   />
+                </Stack>
+                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
                   <TextField
                     fullWidth
-                    label="Address"
-                    {...getFieldProps('address')}
-                    error={Boolean(touched.address && errors.address)}
-                    helperText={touched.address && errors.address}
+                    label="bệnh nền"
+                    {...getFieldProps('backgroundDisease')}
+                    error={Boolean(touched.backgroundDisease && errors.backgroundDisease)}
+                    helperText={touched.backgroundDisease && errors.backgroundDisease}
+                  />
+                  <TextField
+                    fullWidth
+                    label="Dị ứng"
+                    {...getFieldProps('allergy')}
+                    error={Boolean(touched.allergy && errors.allergy)}
+                    helperText={touched.allergy && errors.allergy}
+                  />
+                </Stack>
+                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
+                  <TextField
+                    fullWidth
+                    label="Nhóm máu"
+                    {...getFieldProps('bloodGroup')}
+                    error={Boolean(touched.bloodGroup && errors.bloodGroup)}
+                    helperText={touched.bloodGroup && errors.bloodGroup}
                   />
                 </Stack>
                 {isEdit && (
@@ -246,8 +264,8 @@ export default function DiverNewForm({ isEdit, currentDiver }: DiverNewFormProps
                         <TextField
                           {...params}
                           label="Status"
-                          error={Boolean(touched.status && errors.status)}
-                          helperText={touched.status && errors.status}
+                          error={Boolean(touched.email && errors.email)}
+                          helperText={touched.email && errors.email}
                         />
                       )}
                     />
@@ -255,7 +273,7 @@ export default function DiverNewForm({ isEdit, currentDiver }: DiverNewFormProps
                 )}
                 <Box sx={{ mt: 3, display: 'flex', justifyContent: 'flex-end' }}>
                   <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
-                    {!isEdit ? 'Create Diver' : 'Save Changes'}
+                    {!isEdit ? 'Thêm mới' : 'Chỉnh sửa'}
                   </LoadingButton>
                 </Box>
               </Stack>

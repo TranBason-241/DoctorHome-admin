@@ -1,11 +1,12 @@
 export type Patient = {
   id: string;
-  username: string;
-  name: string;
-  phone: string;
   email: string;
-  address: string;
-  imageUrl: string;
-  password: string;
-  status: any;
+  name: string;
+  avatar: string;
+  backgroundDisease: string;
+  allergy: string;
+  bloodGroup: string;
+  isActive: boolean;
+  phone: string;
+  healthChecks: any;
 };

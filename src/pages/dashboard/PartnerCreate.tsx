@@ -32,7 +32,7 @@ export default function ServiceCreate() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const { translate } = useLocales();
-  const { diverList } = useSelector((state: RootState) => state.diver);
+  // const { diverList } = useSelector((state: RootState) => state.diver);
   const isEdit = pathname.includes('edit');
   const isManage = pathname.includes('manageOrderPartner');
   const isAddNew = pathname.includes('new');

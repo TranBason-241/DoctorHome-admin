@@ -177,7 +177,7 @@ export default function UserList() {
   useEffect(() => {
     // dispatch(getListDiver());
     dispatch(getListService(user?.siteid, rowsPerPage, page));
-  }, [dispatch, , rowsPerPage, page]);
+  }, [dispatch, rowsPerPage, page]);
 
   const emptyRows = !isLoading && !serviceList;
 

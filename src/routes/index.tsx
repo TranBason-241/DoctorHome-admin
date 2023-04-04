@@ -263,9 +263,18 @@ export default function Router() {
           path: 'patient',
           children: [
             { path: '/', element: <Navigate to="/dashboard/patient/list" replace /> },
-            { path: 'list', element: <DiverList /> },
-            { path: 'new', element: <DiverCreate /> },
-            { path: '/:name/edit', element: <DiverCreate /> }
+            { path: 'list', element: <PatientList /> },
+            { path: 'new', element: <PatientCreate /> },
+            { path: '/:name/edit', element: <PatientCreate /> }
+          ]
+        },
+        {
+          path: 'doctor',
+          children: [
+            { path: '/', element: <Navigate to="/dashboard/doctor/list" replace /> },
+            { path: 'list', element: <DoctorList /> },
+            { path: 'new', element: <PatientCreate /> },
+            { path: '/:name/edit', element: <PatientCreate /> }
           ]
         }
       ]
@@ -460,6 +469,9 @@ const GardenCreate = Loadable(lazy(() => import('../pages/dashboard/GardenCreate
 const SiteCreate = Loadable(lazy(() => import('../pages/dashboard/SiteCreate')));
 const GardenTypeCreate = Loadable(lazy(() => import('../pages/dashboard/GardenTypeCreate')));
 const DiverList = Loadable(lazy(() => import('../pages/dashboard/PatientList')));
+const PatientList = Loadable(lazy(() => import('../pages/dashboard/PatientList')));
+const DoctorList = Loadable(lazy(() => import('../pages/dashboard/DoctorList')));
+const PatientCreate = Loadable(lazy(() => import('../pages/dashboard/PatientCreate')));
 const OrderList = Loadable(lazy(() => import('../pages/dashboard/OrderList')));
 const ServiceList = Loadable(lazy(() => import('../pages/dashboard/ServiceList')));
 const ExerciseTypeCreate = Loadable(lazy(() => import('../pages/dashboard/ExerciseTypeCreate')));

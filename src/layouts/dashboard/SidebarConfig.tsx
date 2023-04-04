@@ -33,7 +33,8 @@ const ICONS = {
   typeBaiTap: getIcon('type_baitap'),
   baiTap: getIcon('baitap'),
   phoi_1: getIcon('phoi_1'),
-  phoi_2: getIcon('phoi_2')
+  phoi_2: getIcon('phoi_2'),
+  doctor: getIcon('doctor')
 };
 
 export default function SidebarConfig() {
@@ -59,11 +60,11 @@ export default function SidebarConfig() {
     {
       subheader: 'Quản lý bài tập',
       items: [
-        {
-          title: 'service list',
-          path: PATH_DASHBOARD.service.list,
-          icon: ICONS.typeBaiTap
-        },
+        // {
+        //   title: 'service list',
+        //   path: PATH_DASHBOARD.service.list,
+        //   icon: ICONS.typeBaiTap
+        // },
         {
           title: 'Loại Bài Tập',
           path: PATH_DASHBOARD.exerciseType.list,
@@ -90,10 +91,15 @@ export default function SidebarConfig() {
           icon: ICONS.baiTap
         },
         {
-          title: 'user',
-          path: PATH_DASHBOARD.partner.list,
-          icon: ICONS.user
+          title: 'Danh sách bác sĩ',
+          path: PATH_DASHBOARD.doctor.list,
+          icon: ICONS.doctor
         }
+        // {
+        //   title: 'user',
+        //   path: PATH_DASHBOARD.partner.list,
+        //   icon: ICONS.doctor
+        // }
 
         // {
         //   title: translate('menu.sideBar.item.order'),

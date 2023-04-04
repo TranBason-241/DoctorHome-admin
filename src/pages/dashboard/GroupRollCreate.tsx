@@ -30,7 +30,7 @@ export default function ServiceCreate() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
 
-  const { diverList } = useSelector((state: RootState) => state.diver);
+  // const { diverList } = useSelector((state: RootState) => state.diver);
   const isEdit = pathname.includes('edit');
   const { name } = useParams();
 
